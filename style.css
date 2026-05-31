@@ -282,6 +282,31 @@ a:hover {
   text-align: center;
 }
 
+.screenshot-dashboard {
+  width: 120%;
+  border-radius: var(--radius);
+  justify-self: center;
+  display: block;
+ }
+.screenshot-historia {
+  width: 100%;
+  border-radius: var(--radius);
+  justify-self: center;
+  display: block;
+ }
+.screenshot-pasek {
+  width: 50%;
+  border-radius: var(--radius);
+  justify-self: center;
+  display: block;
+ }
+.screenshot-anon {
+  width: 120%;
+  border-radius: var(--radius);
+  justify-self: center;
+  display: block;
+ }
+
 /* ============================================================
    PROBLEM
    ============================================================ */
@@ -927,7 +952,9 @@ a:hover {
   }
 
   .myzelai-visual {
-    display: none;
+    display: block;
+    width: 100%;
+    margin-top: 24px;
   }
 
   .myzelai-text {
@@ -936,6 +963,31 @@ a:hover {
     border-top: 3px solid var(--primary);
     padding-top: 24px;
   }
+
+  .screenshot-dashboard {
+    width: 100%;
+    border-radius: var(--radius);
+    justify-self: center;
+    display: block;
+   }
+  .screenshot-historia {
+    width: 100%;
+    border-radius: var(--radius);
+    justify-self: center;
+    display: block;
+   }
+  .screenshot-pasek {
+    width: 100%;
+    border-radius: var(--radius);
+    justify-self: center;
+    display: block;
+   }
+  .screenshot-anon {
+    width: 100%;
+    border-radius: var(--radius);
+    justify-self: center;
+    display: block;
+   }
 
   /* --- Why-local: jednokolumnowy (inline grid → 1fr) --- */
   #why-local [style*="grid-template-columns: 1fr 1fr"] {
