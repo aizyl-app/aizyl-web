@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = 'Zapisywanie…';
 
       try {
-        const response = await fetch('https://app.beehiiv.com/subscribe', {
+        const response = await fetch('https://aizyl-subscribe.aizylapp.workers.dev', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
