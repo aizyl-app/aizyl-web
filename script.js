@@ -1,12 +1,12 @@
 /**
- * script.js — Myzel Web
+ * script.js — Aizyl Web
  * Punkt wejścia aplikacji.
  */
 
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('[Myzel] DOM gotowy.');
+  console.log('[Aizyl] DOM gotowy.');
 
   // Pricing scroll — przewiń do karty Pro (.plan-featured) na mobile
   const pricingContainer = document.querySelector('#pricing [style*="grid-template-columns: repeat(3, 1fr)"]');

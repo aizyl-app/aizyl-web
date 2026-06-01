@@ -725,7 +725,7 @@ a:hover {
 }
 
 /* ============================================================
-   MYZEL AI
+   AIZYL AI
    ============================================================ */
 .myzelai-inner {
   display: grid;
@@ -1126,7 +1126,7 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  /* --- MyzelAI: jednokolumnowy, screenshot ukryty --- */
+  /* --- AizylAI: jednokolumnowy, screenshot ukryty --- */
   .myzelai-inner {
     grid-template-columns: 1fr;
     gap: 32px;
