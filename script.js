@@ -47,4 +47,45 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Waitlist form
+  const waitlistForm = document.getElementById('waitlist-form');
+  const waitlistMsg = document.getElementById('waitlist-msg');
+
+  if (waitlistForm && waitlistMsg) {
+    waitlistForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = /** @type {HTMLInputElement} */ (document.getElementById('waitlist-email')).value;
+      const btn = /** @type {HTMLButtonElement} */ (waitlistForm.querySelector('.waitlist-submit'));
+
+      btn.disabled = true;
+      btn.textContent = 'Zapisywanie…';
+
+      try {
+        const response = await fetch('https://app.beehiiv.com/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            publication_id: 'pub_5c8ea301-6a28-49bd-800a-9500f33687de',
+            utm_source: 'website',
+          }),
+        });
+
+        if (response.ok || response.status === 200 || response.status === 201) {
+          waitlistMsg.textContent = '✓ Zapisano! Powiadomimy Cię w dniu launchu.';
+          waitlistMsg.style.color = 'var(--primary)';
+        } else {
+          throw new Error('bad_status');
+        }
+      } catch (_err) {
+        waitlistMsg.textContent = 'Coś poszło nie tak. Spróbuj ponownie.';
+        waitlistMsg.style.color = 'red';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Zapisz mnie';
+      }
+    });
+  }
 });

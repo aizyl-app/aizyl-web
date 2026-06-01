@@ -484,10 +484,11 @@
     <section id="cta-final">
       <h2 class="cta-final-heading">Każdy dzień bez Aizyla to dzień w którym nie wiesz co dzieje się z danymi twoich klientów.</h2>
       <p class="cta-final-sub">Bądź pierwszy. Dostaniesz powiadomienie w dniu launchu.</p>
-      <form name="waitlist" method="POST" data-netlify="true" class="waitlist-form">
-        <input type="email" name="email" placeholder="twój@email.pl" required class="waitlist-input" />
+      <form id="waitlist-form">
+        <input type="email" id="waitlist-email" class="waitlist-input" placeholder="twój@email.pl" required />
         <button type="submit" class="waitlist-submit">Zapisz mnie</button>
       </form>
+      <p id="waitlist-msg" class="waitlist-msg"></p>
     </section>
 
   <footer class="site-footer">
