@@ -944,8 +944,6 @@ a:hover {
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 24px;
-  max-width: 640px;
-  margin: 24px auto 0;
 }
 
 .waitlist-input {
