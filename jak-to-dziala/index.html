@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jak działa Aizyl DLP — monitoring schowka, watchdog folderów, pasek systemowy, Shadow AI Audit, pamięć i flota urządzeń." />
+  <title>Jak to działa — A I Z Y L</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jak to działa — A I Z Y L" />
+  <meta property="og:description" content="Poznaj mechanizmy ochrony danych Aizyl DLP krok po kroku." />
+  <meta property="og:image" content="https://aizyl.pl/assets/og-image.png" />
+  <meta property="og:url" content="https://aizyl.pl/jak-to-dziala" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jak to działa — A I Z Y L" />
+  <meta name="twitter:description" content="Poznaj mechanizmy ochrony danych Aizyl DLP krok po kroku." />
+  <meta name="twitter:image" content="https://aizyl.pl/assets/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/aizyl_logo_noactive.png">
+  <link rel="apple-touch-icon" href="../assets/aizyl_logo_noactive.png">
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Google Fonts: Space Mono -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+  <!-- GSAP + ScrollTrigger + ScrollToPlugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="site-nav" id="site-nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">A I Z Y L</a>
+      <ul class="nav-links">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="#akt-1" class="active">Jak to działa</a></li>
+        <li><a href="/realne-ryzyka">Realne ryzyka</a></li>
+        <li><a href="/#features">Funkcje</a></li>
+        <li><a href="/#pricing">Cennik</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+      <a href="/#cta-final" class="btn btn-primary nav-cta"><span class="nav-cta-full">Zapisz się na listę oczekujących →</span><span class="nav-cta-short">Zapisz się</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="jtd-main">
+
+    <!-- AKT 01 — SCHOWEK -->
+    <section class="akt akt-01" id="akt-1" data-akt="01">
+      <div class="container akt-inner akt-inner--01">
+        <span class="akt-label">AKT 01 // SCHOWEK</span>
+        <h2>Każdy tekst, obraz i plik kopiowany przez pracownika przechodzi przez Aizyl.</h2>
+        <p class="akt-desc">Pracownicy codziennie kopiują dane do czatów AI, dokumentów i wiadomości — często bez świadomości, że trafiają tam numery PESEL, dane kart czy informacje o klientach. Aizyl analizuje każdą kopię w czasie rzeczywistym i w zależności od ustawień ostrzega, blokuje wklejenie albo automatycznie anonimizuje i maskuje wykryte dane, zanim opuszczą firmę.</p>
+
+        <!-- SCANNER SCENE — jedna scena, dwa okna side-by-side -->
+        <div class="scanner-scene" id="scanner-scene-01">
+
+          <!-- OKNO 1: Dokument Word — Umowa.docx -->
+          <div class="win-word--akt1" id="akt1-win-word">
+            <!-- Titlebar Word -->
+            <div class="win-titlebar win-titlebar--word">
+              <div class="win-title-left">
+                <i class="ti ti-file-type-docx"></i>
+                <span class="win-title-name">Umowa.docx — Microsoft Word</span>
+              </div>
+              <div class="win-controls">
+                <span class="win-btn win-btn--min"></span>
+                <span class="win-btn win-btn--max"></span>
+                <span class="win-btn win-btn--close"></span>
+              </div>
+            </div>
+            <!-- Ribbon uproszczony -->
+            <div class="word-ribbon">
+              <span class="ribbon-tab ribbon-tab--active">Narzędzia główne</span>
+              <span class="ribbon-tab">Wstawianie</span>
+              <span class="ribbon-tab">Układ</span>
+            </div>
+            <!-- Treść dokumentu -->
+            <div class="word-content word-content--akt1">
+              <div class="word-doc-title">UMOWA ZLECENIA NR 07/2025</div>
+              <div class="word-placeholder-line" style="width:88%"></div>
+              <div class="word-placeholder-line" style="width:74%"></div>
+              <!-- Linie danych poufnych i nie-poufnych -->
+              <div class="akt1-doc-line" data-secret="true" id="akt1-line-zleceniobiorca">
+                <span class="akt1-doc-label">Zleceniobiorca:</span>
+                <span class="akt1-doc-value" id="akt1-val-zleceniobiorca">Jan Kowalski</span>
+              </div>
+              <div class="akt1-doc-line" data-secret="true" id="akt1-line-pesel">
+                <span class="akt1-doc-label">PESEL:</span>
+                <span class="akt1-doc-value" id="akt1-val-pesel">89010112345</span>
+              </div>
+              <div class="akt1-doc-line" data-secret="true" id="akt1-line-konto">
+                <span class="akt1-doc-label">Nr konta:</span>
+                <span class="akt1-doc-value" id="akt1-val-konto">PL61 1090 0008 0000 1234 5678 9012</span>
+              </div>
+              <div class="akt1-doc-line" data-secret="false" id="akt1-line-kwota">
+                <span class="akt1-doc-label">Kwota:</span>
+                <span class="akt1-doc-value" id="akt1-val-kwota">12 500,00 PLN</span>
+              </div>
+              <div class="word-placeholder-line" style="width:80%"></div>
+              <div class="word-placeholder-line" style="width:62%"></div>
+            </div>
+          </div><!-- /#akt1-win-word -->
+
+          <!-- OKNO 2: Zrzut ekranu — formularz CRM -->
+          <div class="win-screenshot" id="akt1-win-screenshot">
+            <!-- Titlebar Screenshot -->
+            <div class="win-titlebar win-titlebar--screenshot">
+              <div class="win-title-left">
+                <i class="ti ti-photo"></i>
+                <span class="win-title-name">Zrzut ekranu — formularz.png</span>
+              </div>
+              <div class="win-controls">
+                <span class="win-btn win-btn--min"></span>
+                <span class="win-btn win-btn--max"></span>
+                <span class="win-btn win-btn--close"></span>
+              </div>
+            </div>
+            <!-- Pasek adresu (imitacja przeglądarki/podglądu) -->
+            <div class="screenshot-toolbar">
+              <i class="ti ti-zoom-in"></i>
+              <span class="screenshot-toolbar__label">Podgląd obrazu</span>
+              <span class="screenshot-toolbar__zoom">100%</span>
+            </div>
+            <!-- Treść: mockup formularza CRM -->
+            <div class="screenshot-content">
+              <div class="crm-form-title">Formularz CRM — nowe zamówienie</div>
+              <div class="crm-form-fields">
+                <div class="crm-field" data-secret="true" id="akt1-field-imie">
+                  <label class="crm-field__label">Imię i nazwisko</label>
+                  <div class="crm-field__input" id="akt1-val-imie">Anna Nowak</div>
+                </div>
+                <div class="crm-field" data-secret="true" id="akt1-field-email">
+                  <label class="crm-field__label">Email</label>
+                  <div class="crm-field__input" id="akt1-val-email">anna.nowak@firma.pl</div>
+                </div>
+                <div class="crm-field" data-secret="false" id="akt1-field-kwota">
+                  <label class="crm-field__label">Kwota zamówienia</label>
+                  <div class="crm-field__input" id="akt1-val-kwota-form">8 200,00 PLN</div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /#akt1-win-screenshot -->
+
+          <!-- Belka skanująca — jedna, przejeżdża przez całą scenę -->
+          <div class="scan-beam" id="scan-beam-01"></div>
+
+          <!-- Badge "Zanonimizowano" — fade-in po zakończeniu skanowania -->
+          <div class="anon-badge" id="anon-badge-01">
+            <i class="ti ti-shield-check"></i>
+            <span>Zanonimizowano</span>
+          </div>
+
+        </div><!-- /.scanner-scene -->
+
+        <!-- PORÓWNANIE — statyczna sekcja pod animacją -->
+        <div class="comparison-summary" id="comparison-summary-01">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Dane poufne automatycznie zanonimizowane lokalnie w tekście i na zrzutach ekranu — bezpieczne do wklejenia w AI</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>PESEL, numer konta i dane z formularza trafiają do ChatGPT bez zmian. RODO Art.&nbsp;33: 72h na zgłoszenie, kara do 20&nbsp;mln&nbsp;EUR lub 4% obrotu</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKT 02 — PLIKI -->
+    <section class="akt akt-02" id="akt-2" data-akt="02">
+      <div class="container akt-inner akt-inner--02">
+        <span class="akt-label">AKT 02 // PLIKI</span>
+        <h2>Watchdog folderów skanuje każdy nowy i zmieniony plik w czasie rzeczywistym.</h2>
+        <p class="akt-desc">Plik z danymi klientów zapisany w złym folderze może rozesłać się po całej firmie, zanim ktokolwiek to zauważy. Watchdog Aizyla obserwuje wskazane lokalizacje na bieżąco i sprawdza każdy nowy lub zmieniony plik, zanim stanie się problemem.</p>
+
+        <!-- EXPLORER WINDOW — jedno okno, dwukolumnowe wnętrze -->
+        <div class="win-explorer" id="win-explorer-02">
+
+          <!-- Titlebar -->
+          <div class="win-titlebar win-titlebar--explorer">
+            <div class="win-title-left">
+              <i class="ti ti-folder"></i>
+              <span class="win-title-name">C:\Dokumenty\Klienci</span>
+            </div>
+            <div class="win-controls">
+              <span class="win-btn win-btn--min"></span>
+              <span class="win-btn win-btn--max"></span>
+              <span class="win-btn win-btn--close"></span>
+            </div>
+          </div>
+
+          <!-- Wnętrze: sidebar + content -->
+          <div class="explorer-body">
+
+            <!-- Lewy panel boczny -->
+            <div class="explorer-sidebar">
+              <div class="explorer-sidebar__item">
+                <i class="ti ti-star"></i>
+                <span>Szybki dostęp</span>
+              </div>
+              <div class="explorer-sidebar__item">
+                <i class="ti ti-desktop"></i>
+                <span>Pulpit</span>
+              </div>
+              <div class="explorer-sidebar__item explorer-sidebar__item--active">
+                <i class="ti ti-folder"></i>
+                <span>Dokumenty</span>
+              </div>
+              <div class="explorer-sidebar__item">
+                <i class="ti ti-cloud"></i>
+                <span>OneDrive</span>
+              </div>
+              <div class="explorer-sidebar__item">
+                <i class="ti ti-device-floppy"></i>
+                <span>Dysk (C:)</span>
+              </div>
+            </div><!-- /.explorer-sidebar -->
+
+            <!-- Prawy obszar z plikami -->
+            <div class="explorer-content">
+              <div class="file-grid file-grid--explorer">
+
+                <!-- 7 plików statycznych -->
+                <div class="file-node" id="fn-e-1">
+                  <i class="ti ti-file-type-docx"></i>
+                  <span class="file-node__name">umowa_klient.docx</span>
+                </div>
+                <div class="file-node" id="fn-e-2">
+                  <i class="ti ti-file-type-pdf"></i>
+                  <span class="file-node__name">cennik.pdf</span>
+                </div>
+                <div class="file-node" id="fn-e-3">
+                  <i class="ti ti-table"></i>
+                  <span class="file-node__name">dane_klientow.csv</span>
+                </div>
+                <div class="file-node" id="fn-e-4">
+                  <i class="ti ti-file"></i>
+                  <span class="file-node__name">notatki.txt</span>
+                </div>
+                <div class="file-node" id="fn-e-5">
+                  <i class="ti ti-folder"></i>
+                  <span class="file-node__name">backup/</span>
+                </div>
+                <div class="file-node" id="fn-e-6">
+                  <i class="ti ti-presentation"></i>
+                  <span class="file-node__name">prezentacja.pptx</span>
+                </div>
+                <div class="file-node" id="fn-e-7">
+                  <i class="ti ti-file-spreadsheet"></i>
+                  <span class="file-node__name">raport_marzec.xlsx</span>
+                </div>
+
+                <!-- Nowy plik — startowo niewidoczny -->
+                <div class="file-node file-node--new" id="fn-e-new">
+                  <i class="ti ti-file-spreadsheet"></i>
+                  <span class="file-node__name">raport_Q2.xlsx</span>
+                </div>
+
+              </div><!-- /.file-grid -->
+            </div><!-- /.explorer-content -->
+
+          </div><!-- /.explorer-body -->
+
+          <!-- Shine overlay — rozciągnięty na całe okno (sidebar + content) -->
+          <div class="shine shine--explorer" id="shine-explorer"></div>
+
+          <!-- Toast nad oknem -->
+          <div class="toast toast--explorer" id="toast-explorer">
+            <i class="ti ti-shield-search toast__icon" id="toast-explorer-icon"></i>
+            <span class="toast__text" id="toast-explorer-text">Watchdog: nowy plik wykryty, skanowanie...</span>
+          </div>
+
+        </div><!-- /.win-explorer -->
+
+        <!-- PORÓWNANIE — statyczna sekcja pod animacją (wzorzec z Aktu 1) -->
+        <div class="comparison-summary comparison-summary--akt2" id="comparison-summary-02">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Watchdog automatycznie przeskanował nowy plik w monitorowanej ścieżce — bez udziału użytkownika, wynik w historii alertów</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>Nowy plik z danymi klientów leży niezauważony — nikt nie wie że tam jest, aż będzie za późno.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKT 03 — MENU KONTEKSTOWE -->
+    <section class="akt akt-03" id="akt-3" data-akt="03">
+      <div class="container akt-inner akt-inner--03">
+        <span class="akt-label">AKT 03 // MENU KONTEKSTOWE</span>
+        <h2>Menu kontekstowe Aizyl działa na każdym pliku — sprawdzenie na żądanie w kilka sekund.</h2>
+        <p class="akt-desc">Nie każdy plik trafia do obserwowanego folderu — czasem trzeba sprawdzić coś z pulpitu, pobranych plików czy pendrive'a. Jedno kliknięcie prawym przyciskiem myszy wystarczy, żeby Aizyl przeskanował dowolny plik na komputerze, niezależnie od watchdoga.</p>
+
+        <!-- EXPLORER WINDOW — jedno okno, wzorzec Aktu 2 -->
+        <div class="win-explorer win-explorer--akt3" id="win-explorer-03">
+
+          <!-- Titlebar — niebieski jak Windows Explorer -->
+          <div class="win-titlebar win-titlebar--explorer">
+            <div class="win-title-left">
+              <i class="ti ti-folder"></i>
+              <span class="win-title-name">Pulpit</span>
+            </div>
+            <div class="win-controls">
+              <span class="win-btn win-btn--min"></span>
+              <span class="win-btn win-btn--max"></span>
+              <span class="win-btn win-btn--close"></span>
+            </div>
+          </div>
+
+          <!-- Pasek zakładek — styl Windows 11 Explorer -->
+          <div class="explorer-tabs">
+            <div class="explorer-tab explorer-tab--active">
+              <i class="ti ti-folder"></i>
+              <span>Pulpit</span>
+            </div>
+          </div>
+
+          <!-- Wnętrze: sidebar + content -->
+          <div class="explorer-body">
+
+            <!-- Lewy panel boczny -->
+            <div class="explorer-sidebar">
+              <div class="explorer-sidebar__item">
+                <i class="ti ti-star"></i>
+                <span>Szybki dostęp</span>
+              </div>
+              <div class="explorer-sidebar__item explorer-sidebar__item--active">
+                <i class="ti ti-desktop"></i>
+                <span>Pulpit</span>
+              </div>
+              <div class="explorer-sidebar__item">
+                <i class="ti ti-folder"></i>
+                <span>Dokumenty</span>
+              </div>
+              <div class="explorer-sidebar__item">
+                <i class="ti ti-cloud"></i>
+                <span>OneDrive</span>
+              </div>
+              <div class="explorer-sidebar__item">
+                <i class="ti ti-device-floppy"></i>
+                <span>Dysk (C:)</span>
+              </div>
+            </div><!-- /.explorer-sidebar -->
+
+            <!-- Prawy obszar z plikami -->
+            <div class="explorer-content">
+              <div class="file-grid file-grid--ctx3">
+
+                <!-- Plik główny — wyróżniony, większy -->
+                <div class="file-node ctx-file-node--large" id="ctx-fn-main">
+                  <i class="ti ti-file-type-pdf"></i>
+                  <span class="file-node__name">umowa_od_klienta.pdf</span>
+                  <!-- Shine tylko nad tym plikiem -->
+                  <div class="shine shine--file" id="ctx-shine"></div>
+                </div>
+
+                <div class="file-node" id="ctx-fn-2">
+                  <i class="ti ti-file-type-pdf"></i>
+                  <span class="file-node__name">faktura.pdf</span>
+                </div>
+
+                <div class="file-node" id="ctx-fn-3">
+                  <i class="ti ti-file-type-docx"></i>
+                  <span class="file-node__name">cv_kandydata.docx</span>
+                </div>
+
+              </div><!-- /.file-grid -->
+            </div><!-- /.explorer-content -->
+
+          </div><!-- /.explorer-body -->
+
+          <!-- Kursor -->
+          <div class="cursor-icon" id="ctx-cursor">
+            <i class="ti ti-pointer"></i>
+          </div>
+
+          <!-- Menu kontekstowe -->
+          <div class="ctx-menu" id="ctx-menu">
+            <div class="ctx-item">Otwórz</div>
+            <div class="ctx-item">Drukuj</div>
+            <div class="ctx-separator"></div>
+            <div class="ctx-item ctx-item--aizyl" id="ctx-item-aizyl">
+              <i class="ti ti-shield-search"></i>
+              Sprawdź z Aizyl
+            </div>
+            <div class="ctx-item">Skanuj antywirusem</div>
+            <div class="ctx-separator"></div>
+            <div class="ctx-item ctx-item--danger">Usuń</div>
+          </div>
+
+          <!-- Toast -->
+          <div class="toast toast--akt3" id="ctx-toast">
+            <i class="ti ti-shield-check toast__icon toast__icon--ok"></i>
+            <span>Sprawdzono ✓ — bezpieczny</span>
+          </div>
+
+        </div><!-- /.win-explorer--akt3 -->
+
+        <!-- PORÓWNANIE — wzorzec Aktu 2 -->
+        <div class="comparison-summary comparison-summary--akt3" id="comparison-summary-03">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Menu kontekstowe Aizyl działa na każdym pliku na komputerze — sprawdzenie na żądanie w kilka sekund</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>Plik z Pulpitu nigdy nie został sprawdzony — nikt nie wie co w nim jest, aż będzie za późno.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKT 04 — PASEK SYSTEMOWY -->
+    <section class="akt akt-04" id="akt-4" data-akt="04">
+      <div class="container akt-inner akt-inner--04">
+        <span class="akt-label">AKT 04 // PASEK SYSTEMOWY</span>
+        <h2>Cichy strażnik — zawsze widoczny, reaguje tylko gdy trzeba.</h2>
+        <p class="akt-desc">Narzędzia bezpieczeństwa, które bombardują powiadomieniami, prędzej czy później zostają wyłączone przez zirytowanego pracownika. Pasek Aizyla siedzi dyskretnie na ekranie i odzywa się tylko wtedy, gdy faktycznie wykryje ryzyko — bez zbędnego szumu.</p>
+
+        <!-- MONITOR MOCKUP -->
+        <div class="monitor-wrap" id="monitor-wrap">
+
+          <!-- Ramka monitora -->
+          <div class="monitor-frame">
+            <div class="monitor-screen">
+
+              <!-- ── PULPIT WINDOWS ── -->
+              <div class="win-desktop">
+
+                <!-- Ikony pulpitu (lewy górny róg) -->
+                <div class="desktop-icons">
+                  <div class="desktop-icon">
+                    <i class="ti ti-device-desktop"></i>
+                    <span>Ten komputer</span>
+                  </div>
+                  <div class="desktop-icon">
+                    <i class="ti ti-trash"></i>
+                    <span>Kosz</span>
+                  </div>
+                </div>
+
+                <!-- ── OKNO PRZEGLĄDARKI (tło, za Wordem) ── -->
+                <div class="win-window win-browser" id="win-browser">
+                  <!-- Titlebar przeglądarki -->
+                  <div class="win-titlebar win-titlebar--browser">
+                    <div class="win-tabs">
+                      <div class="win-tab win-tab--active">
+                        <i class="ti ti-robot"></i>
+                        <span>AI Chat — demo.ai</span>
+                      </div>
+                    </div>
+                    <div class="win-controls">
+                      <span class="win-btn win-btn--min"></span>
+                      <span class="win-btn win-btn--max"></span>
+                      <span class="win-btn win-btn--close"></span>
+                    </div>
+                  </div>
+                  <!-- Pasek adresu -->
+                  <div class="browser-addressbar">
+                    <i class="ti ti-lock"></i>
+                    <span class="browser-url">demo.ai/chat</span>
+                  </div>
+                  <!-- Treść czatu -->
+                  <div class="browser-content">
+                    <!-- Bąbelek AI (placeholder) -->
+                    <div class="chat-bubble chat-bubble--ai">
+                      <div class="chat-placeholder-line" style="width:88%"></div>
+                      <div class="chat-placeholder-line" style="width:72%"></div>
+                      <div class="chat-placeholder-line" style="width:60%"></div>
+                    </div>
+                    <!-- Pole wiadomości -->
+                    <div class="chat-input-wrap">
+                      <div class="chat-input" id="chat-input">
+                        <span class="chat-input__text" id="chat-input-text"></span>
+                        <span class="chat-input__cursor" id="chat-cursor"></span>
+                      </div>
+                      <button class="chat-send-btn" aria-label="Wyślij">
+                        <i class="ti ti-send"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div><!-- /.win-browser -->
+
+                <!-- ── OKNO WORD (na wierzchu) ── -->
+                <div class="win-window win-word" id="win-word">
+                  <!-- Titlebar Word -->
+                  <div class="win-titlebar win-titlebar--word">
+                    <div class="win-title-left">
+                      <i class="ti ti-file-type-docx"></i>
+                      <span class="win-title-name">Umowa.docx — Microsoft Word</span>
+                    </div>
+                    <div class="win-controls">
+                      <span class="win-btn win-btn--min"></span>
+                      <span class="win-btn win-btn--max"></span>
+                      <span class="win-btn win-btn--close"></span>
+                    </div>
+                  </div>
+                  <!-- Ribbon (uproszczony) -->
+                  <div class="word-ribbon">
+                    <span class="ribbon-tab ribbon-tab--active">Narzędzia główne</span>
+                    <span class="ribbon-tab">Wstawianie</span>
+                    <span class="ribbon-tab">Układ</span>
+                  </div>
+                  <!-- Treść dokumentu -->
+                  <div class="word-content">
+                    <div class="word-doc-title">UMOWA ZLECENIA NR 12/2025</div>
+                    <!-- Placeholder linie -->
+                    <div class="word-placeholder-line" style="width:90%"></div>
+                    <div class="word-placeholder-line" style="width:78%"></div>
+                    <div class="word-placeholder-line" style="width:85%"></div>
+                    <div class="word-placeholder-line" style="width:40%"></div>
+                    <!-- Linia z PESEL -->
+                    <div class="word-pesel-line" id="word-pesel-line">
+                      <span class="word-pesel-label">PESEL:</span><span class="word-pesel-value" id="word-pesel-value">89010112345</span>
+                      <!-- Podświetlenie zaznaczenia — pozycja ustawiana przez JS -->
+                      <div class="word-selection" id="word-selection"></div>
+                      <!-- Tooltip kopiowania — pojawia się po zaznaczeniu, przed Alt+Tab -->
+                      <div class="copy-tooltip" id="copy-tooltip">
+                        <i class="ti ti-copy"></i>
+                        <span>Skopiowano</span>
+                      </div>
+                    </div>
+                    <!-- Więcej placeholder linii -->
+                    <div class="word-placeholder-line" style="width:82%"></div>
+                    <div class="word-placeholder-line" style="width:65%"></div>
+                  </div>
+                </div><!-- /.win-word -->
+
+                <!-- ── PASEK AIZYL (pill, prawy górny róg) ── -->
+                <div class="aizyl-pill" id="aizyl-pill">
+                  <div class="aizyl-pill__inner" id="aizyl-pill-inner">
+                    <span class="aizyl-pill__icon-wrap">
+                      <i class="ti ti-shield-check aizyl-pill__icon" id="aizyl-pill-icon"></i>
+                    </span>
+                    <span class="aizyl-pill__text" id="aizyl-pill-text">Aizyl</span>
+                  </div>
+                </div>
+
+                <!-- ── PASEK ZADAŃ WINDOWS ── -->
+                <div class="win-taskbar">
+                  <!-- Lewa: ikony systemowe -->
+                  <div class="taskbar-left">
+                    <div class="taskbar-icon taskbar-icon--start">
+                      <i class="ti ti-brand-windows"></i>
+                    </div>
+                    <div class="taskbar-icon">
+                      <i class="ti ti-folder"></i>
+                    </div>
+                    <div class="taskbar-icon">
+                      <i class="ti ti-world"></i>
+                    </div>
+                    <div class="taskbar-icon">
+                      <i class="ti ti-file-type-docx"></i>
+                    </div>
+                  </div>
+                  <!-- Prawa: zegar + ikony systemowe -->
+                  <div class="taskbar-right">
+                    <div class="taskbar-sys-icons">
+                      <i class="ti ti-wifi"></i>
+                      <i class="ti ti-volume"></i>
+                    </div>
+                    <div class="taskbar-clock">
+                      <span class="taskbar-time">14:32</span>
+                      <span class="taskbar-date">15.06.2025</span>
+                    </div>
+                  </div>
+                </div><!-- /.win-taskbar -->
+
+              </div><!-- /.win-desktop -->
+            </div><!-- /.monitor-screen -->
+          </div><!-- /.monitor-frame -->
+
+          <!-- Podstawka monitora -->
+          <div class="monitor-stand">
+            <div class="monitor-stand__neck"></div>
+            <div class="monitor-stand__base"></div>
+          </div>
+
+        </div><!-- /.monitor-wrap -->
+
+        <!-- PORÓWNANIE — wzorzec Aktów 1-3 -->
+        <div class="comparison-summary comparison-summary--akt4" id="comparison-summary-04">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Pasek systemowy w czasie rzeczywistym ostrzega przed wklejeniem danych poufnych — pracownik wie o ryzyku w momencie, gdy może jeszcze zareagować</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>Pracownik wkleja PESEL do ChatGPT bez żadnego ostrzeżenia — błąd powtarza się, nikt nie wie że doszło do wycieku</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKT 05 — SHADOW AI -->
+    <section class="akt akt-05" id="akt-5" data-akt="05">
+      <div class="container akt-inner akt-inner--05">
+        <span class="akt-label">AKT 05 // SHADOW AI</span>
+        <h2>Aizyl wykrywa połączenia z zewnętrznymi serwisami AI w sieci firmowej.</h2>
+        <p class="akt-desc">Pracownicy korzystają z ChatGPT, Geminiego czy Copilota na własną rękę, a IT nie ma żadnego wglądu, ile danych firmowych już tam trafiło. Aizyl monitoruje ruch sieciowy w czasie rzeczywistym i pokazuje pełny obraz: które usługi AI są używane, jak często i przez kogo.</p>
+
+        <!-- AIZYL APP WINDOW -->
+        <div class="win-aizyl-app" id="win-aizyl-app-05">
+
+          <!-- Titlebar -->
+          <div class="win-aizyl-titlebar">
+            <span class="win-aizyl-brand">A I Z Y L</span>
+            <div class="win-aizyl-controls">
+              <button class="win-aizyl-btn win-aizyl-btn--min" aria-label="Minimalizuj">&#8722;</button>
+              <button class="win-aizyl-btn win-aizyl-btn--close" aria-label="Zamknij">&#215;</button>
+            </div>
+          </div>
+
+          <!-- Body: sidebar + content -->
+          <div class="win-aizyl-body">
+
+            <!-- Sidebar -->
+            <div class="app-sidebar">
+              <div class="app-sidebar__icons">
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-shield"></i>
+                </div>
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-clock"></i>
+                </div>
+                <div class="app-sidebar__icon">
+                  <span class="app-sidebar__letter">W</span>
+                </div>
+                <div class="app-sidebar__icon app-sidebar__icon--active">
+                  <i class="ti ti-zoom-scan"></i>
+                </div>
+              </div>
+              <div class="app-sidebar__bottom">
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-settings"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="app-content">
+
+              <!-- Header -->
+              <div class="app-content__header">
+                <div class="app-content__header-left">
+                  <div class="app-content__title">Shadow AI Audit</div>
+                  <div class="app-content__date">CZERWIEC 2026</div>
+                </div>
+                <button class="app-content__report-btn">
+                  <i class="ti ti-file-text"></i>
+                  Generuj raport PDF
+                </button>
+              </div>
+
+              <!-- Cards -->
+              <div class="app-cards">
+
+                <!-- Karta 1: toggle -->
+                <div class="app-card app-card--toggle">
+                  <div class="app-card__left">
+                    <div class="app-card__title">Shadow AI Audit aktywny</div>
+                    <div class="app-card__sub">Monitorowanie usług AI w sieci</div>
+                  </div>
+                  <div class="app-toggle app-toggle--on" aria-label="Włączony">
+                    <div class="app-toggle__track">
+                      <div class="app-toggle__thumb"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Karta 2: statystyki -->
+                <div class="app-card app-card--stat">
+                  <div class="app-card__stat-left">
+                    <div class="app-card__stat-icon">
+                      <i class="ti ti-zoom-scan"></i>
+                    </div>
+                    <div class="app-card__stat-info">
+                      <div class="app-card__stat-label">WYKRYTE USŁUGI AI — TEN MIESIĄC</div>
+                      <div class="counter-value" id="counter-value-05">42</div>
+                    </div>
+                  </div>
+                  <div class="app-card__stat-right">
+                    <div class="app-card__stat-label">AKTYWNE SERWISY</div>
+                    <div class="counter-services" id="counter-services-05">2</div>
+                  </div>
+                </div>
+
+                <!-- Karta 3: monitor dot -->
+                <div class="app-card app-card--monitor">
+                  <div class="app-card__monitor-dot" id="monitor-dot-05"></div>
+                  <div class="app-card__left">
+                    <div class="app-card__title">Monitor Shadow AI</div>
+                    <div class="app-card__sub">Aktywny — analiza ruchu sieciowego w czasie rzeczywistym</div>
+                  </div>
+                </div>
+
+              </div><!-- /.app-cards -->
+
+              <!-- Detected services list -->
+              <div class="detected-services-list" id="detected-services-05">
+                <!-- wiersze dopisywane przez JS -->
+              </div>
+
+            </div><!-- /.app-content -->
+          </div><!-- /.win-aizyl-body -->
+
+          <!-- Kursor animowany — dziecko .win-aizyl-app dla poprawnego position:absolute -->
+          <div class="cursor-icon cursor-icon--akt5" id="akt5-cursor">
+            <i class="ti ti-pointer"></i>
+          </div>
+
+          <!-- Toast "Raport wygenerowany ✓" przy przycisku -->
+          <div class="toast toast--akt5-report" id="akt5-report-toast">
+            <i class="ti ti-circle-check toast__icon toast__icon--ok"></i>
+            <span>Raport wygenerowany ✓</span>
+          </div>
+
+          <!-- Miniaturka wygenerowanego PDF -->
+          <div class="pdf-preview-mini" id="akt5-pdf-preview">
+            <div class="pdf-preview-mini__page">
+              <i class="ti ti-file-text pdf-preview-mini__icon"></i>
+              <span class="pdf-preview-mini__filename">shadow_ai_report_czerwiec_2026.pdf</span>
+            </div>
+          </div>
+
+        </div><!-- /.win-aizyl-app -->
+
+        <!-- PORÓWNANIE -->
+        <div class="comparison-summary comparison-summary--akt5" id="comparison-summary-05">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Aizyl rejestruje każde połączenie z serwisem AI na monitorowanym komputerze — pełna widoczność bez ingerencji w pracę. Raport PDF z pełną listą wykrytych usług generujesz jednym kliknięciem.</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>229 zapytań do ChatGPT, Claude i Gemini w tym miesiącu — i firma nie wiedziała o żadnym z nich.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKT 06 — PAMIĘĆ -->
+    <section class="akt akt-06" id="akt-6" data-akt="06">
+      <div class="container akt-inner akt-inner--06">
+        <span class="akt-label">AKT 06 // PAMIĘĆ</span>
+        <h2>Pełna historia alertów i raport PDF gotowy na kontrolę inspektora.</h2>
+        <p class="akt-desc">Każde zdarzenie jest logowane z datą, godziną i kontekstem. Raport PDF generujesz jednym kliknięciem — dla audytora, IOD lub organu nadzorczego.</p>
+
+        <!-- AIZYL APP WINDOW — reużyj .win-aizyl-app z Aktu 5 -->
+        <div class="win-aizyl-app win-aizyl-app--akt6" id="win-aizyl-app-06">
+
+          <!-- Titlebar — jasny pasek tytułowy -->
+          <div class="win-aizyl-titlebar">
+            <span class="win-aizyl-brand">A I Z Y L</span>
+            <div class="win-aizyl-controls">
+              <button class="win-aizyl-btn win-aizyl-btn--min" aria-label="Minimalizuj">&#8722;</button>
+              <button class="win-aizyl-btn win-aizyl-btn--close" aria-label="Zamknij">&#215;</button>
+            </div>
+          </div>
+
+          <!-- Body: sidebar + content -->
+          <div class="win-aizyl-body">
+
+            <!-- Sidebar — aktywna ikona ti-clock (historia) podświetlona na zielono -->
+            <div class="app-sidebar">
+              <div class="app-sidebar__icons">
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-shield"></i>
+                </div>
+                <div class="app-sidebar__icon app-sidebar__icon--active app-sidebar__icon--history">
+                  <i class="ti ti-clock"></i>
+                </div>
+                <div class="app-sidebar__icon">
+                  <span class="app-sidebar__letter">W</span>
+                </div>
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-zoom-scan"></i>
+                </div>
+              </div>
+              <div class="app-sidebar__bottom">
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-settings"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="app-content">
+
+              <!-- Header: tytuł + zakres dat + jeden przycisk raportu -->
+              <div class="app-content__header">
+                <div class="app-content__header-left">
+                  <div class="app-content__title">Historia alertów</div>
+                  <div class="app-content__date">OSTATNICH 30 DNI</div>
+                </div>
+                <button class="app-content__report-btn" id="akt6-btn-pdf">
+                  <i class="ti ti-file-text"></i>
+                  Generuj raport PDF
+                </button>
+              </div>
+
+              <!-- Lista alertów — 5 wierszy -->
+              <div class="alert-history-list" id="alert-history-list-06">
+
+                <div class="alert-row">
+                  <i class="ti ti-alert-triangle alert-row__icon alert-row__icon--warn"></i>
+                  <div class="alert-row__desc">
+                    <span class="alert-row__event">Schowek — PESEL wykryty</span>
+                  </div>
+                  <span class="alert-row__date">14.06.2026 09:42</span>
+                  <span class="alert-row__badge alert-row__badge--warn">Ostrzeżenie</span>
+                </div>
+
+                <div class="alert-row">
+                  <i class="ti ti-shield-check alert-row__icon alert-row__icon--ok"></i>
+                  <div class="alert-row__desc">
+                    <span class="alert-row__event">Plik — umowa.docx</span>
+                  </div>
+                  <span class="alert-row__date">13.06.2026 14:17</span>
+                  <span class="alert-row__badge alert-row__badge--ok">Zanonimizowano</span>
+                </div>
+
+                <div class="alert-row">
+                  <i class="ti ti-shield-check alert-row__icon alert-row__icon--ok"></i>
+                  <div class="alert-row__desc">
+                    <span class="alert-row__event">Schowek — numer karty wykryty</span>
+                  </div>
+                  <span class="alert-row__date">12.06.2026 11:05</span>
+                  <span class="alert-row__badge alert-row__badge--ok">Zanonimizowano</span>
+                </div>
+
+                <div class="alert-row">
+                  <i class="ti ti-shield-check alert-row__icon alert-row__icon--ok"></i>
+                  <div class="alert-row__desc">
+                    <span class="alert-row__event">Plik — dane_klientow.csv</span>
+                  </div>
+                  <span class="alert-row__date">11.06.2026 16:33</span>
+                  <span class="alert-row__badge alert-row__badge--ok">Zanonimizowano</span>
+                </div>
+
+                <div class="alert-row">
+                  <i class="ti ti-alert-triangle alert-row__icon alert-row__icon--warn"></i>
+                  <div class="alert-row__desc">
+                    <span class="alert-row__event">Schowek — adres email wykryty</span>
+                  </div>
+                  <span class="alert-row__date">10.06.2026 08:58</span>
+                  <span class="alert-row__badge alert-row__badge--warn">Ostrzeżenie</span>
+                </div>
+
+                <div class="alert-row">
+                  <i class="ti ti-alert-triangle alert-row__icon alert-row__icon--warn"></i>
+                  <div class="alert-row__desc">
+                    <span class="alert-row__event">Schowek — numer telefonu wykryty</span>
+                  </div>
+                  <span class="alert-row__date">09.06.2026 15:21</span>
+                  <span class="alert-row__badge alert-row__badge--warn">Ostrzeżenie</span>
+                </div>
+
+                <div class="alert-row">
+                  <i class="ti ti-shield-check alert-row__icon alert-row__icon--ok"></i>
+                  <div class="alert-row__desc">
+                    <span class="alert-row__event">Plik — backup_klienci.zip</span>
+                  </div>
+                  <span class="alert-row__date">08.06.2026 11:44</span>
+                  <span class="alert-row__badge alert-row__badge--ok">Zanonimizowano</span>
+                </div>
+
+                <div class="alert-row">
+                  <i class="ti ti-shield-check alert-row__icon alert-row__icon--ok"></i>
+                  <div class="alert-row__desc">
+                    <span class="alert-row__event">Schowek — IBAN wykryty</span>
+                  </div>
+                  <span class="alert-row__date">07.06.2026 09:03</span>
+                  <span class="alert-row__badge alert-row__badge--ok">Zanonimizowano</span>
+                </div>
+
+              </div><!-- /.alert-history-list -->
+
+            </div><!-- /.app-content -->
+          </div><!-- /.win-aizyl-body -->
+
+          <!-- Kursor animowany -->
+          <div class="cursor-icon cursor-icon--akt6" id="akt6-cursor">
+            <i class="ti ti-pointer"></i>
+          </div>
+
+          <!-- Toast "Raport wygenerowany ✓" przy przycisku -->
+          <div class="toast toast--akt6-report" id="akt6-report-toast">
+            <i class="ti ti-circle-check toast__icon toast__icon--ok"></i>
+            <span>Raport wygenerowany ✓</span>
+          </div>
+
+          <!-- Miniaturka wygenerowanego PDF -->
+          <div class="pdf-preview-mini pdf-preview-mini--akt6" id="akt6-pdf-preview">
+            <div class="pdf-preview-mini__page">
+              <i class="ti ti-file-text pdf-preview-mini__icon"></i>
+              <span class="pdf-preview-mini__filename">dlp_report_czerwiec_2026.pdf</span>
+            </div>
+          </div>
+
+        </div><!-- /.win-aizyl-app -->
+
+        <!-- PORÓWNANIE -->
+        <div class="comparison-summary comparison-summary--akt6" id="comparison-summary-06">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Każde zdarzenie zapisane z datą i kontekstem — raport PDF gotowy na żądanie audytora w kilka sekund</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>Inspektor pyta kto miał dostęp do danych i kiedy doszło do wycieku — zero logów, zero odpowiedzi, zero dowodu należytej staranności.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKT 07 — OCHRONA DOSTĘPU -->
+    <section class="akt akt-07" id="akt-7" data-akt="07">
+      <div class="container akt-inner akt-inner--07">
+        <span class="akt-label">AKT 07 // OCHRONA DOSTĘPU</span>
+        <h2>Hasło administratora chroni każdą próbę wyłączenia lub zmiany ustawień Aizyla.</h2>
+        <p class="akt-desc">Zamknięcie aplikacji, wyłączenie Shadow AI Audit, zmiana autostartu — każda z tych akcji wymaga hasła administratora. Pracownik nie może po prostu wyłączyć ochrony.</p>
+
+        <!-- AIZYL APP WINDOW — reużyj .win-aizyl-app z Aktu 5/6 -->
+        <div class="win-aizyl-app win-aizyl-app--akt7" id="win-aizyl-app-07">
+
+          <!-- Titlebar — jasny pasek tytułowy -->
+          <div class="win-aizyl-titlebar">
+            <span class="win-aizyl-brand">A I Z Y L</span>
+            <div class="win-aizyl-controls">
+              <button class="win-aizyl-btn win-aizyl-btn--min" aria-label="Minimalizuj" id="akt7-btn-min">&#8722;</button>
+              <button class="win-aizyl-btn win-aizyl-btn--close" aria-label="Zamknij" id="akt7-btn-close">&#215;</button>
+            </div>
+          </div>
+
+          <!-- Body: sidebar + content -->
+          <div class="win-aizyl-body">
+
+            <!-- Sidebar — aktywna ikona ti-settings podświetlona na zielono -->
+            <div class="app-sidebar">
+              <div class="app-sidebar__icons">
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-shield"></i>
+                </div>
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-clock"></i>
+                </div>
+                <div class="app-sidebar__icon">
+                  <span class="app-sidebar__letter">W</span>
+                </div>
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-zoom-scan"></i>
+                </div>
+              </div>
+              <div class="app-sidebar__bottom">
+                <div class="app-sidebar__icon app-sidebar__icon--active app-sidebar__icon--settings">
+                  <i class="ti ti-settings"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="app-content">
+
+              <!-- Nagłówek "Ustawienia" -->
+              <div class="app-content__section-title">Ustawienia</div>
+
+              <!-- Karty ustawień -->
+              <div class="app-cards app-cards--settings">
+
+                <!-- Karta 1: Shadow AI Audit -->
+                <div class="app-card app-card--toggle" id="akt7-card-shadow">
+                  <div class="app-card__left">
+                    <div class="app-card__title">Shadow AI Audit</div>
+                    <div class="app-card__sub">Monitorowanie usług AI w sieci</div>
+                  </div>
+                  <div class="app-toggle app-toggle--on" id="akt7-toggle-shadow" aria-label="Włączony">
+                    <div class="app-toggle__track">
+                      <div class="app-toggle__thumb"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Karta 2: Autostart z Windows (statyczna, kontekst wizualny) -->
+                <div class="app-card app-card--toggle" id="akt7-card-autostart">
+                  <div class="app-card__left">
+                    <div class="app-card__title">Autostart z Windows</div>
+                    <div class="app-card__sub">Uruchamiaj Aizyl automatycznie po zalogowaniu</div>
+                  </div>
+                  <div class="app-toggle app-toggle--on" aria-label="Włączony">
+                    <div class="app-toggle__track">
+                      <div class="app-toggle__thumb"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Karta 3: Zamykanie aplikacji (statyczna, ikona kłódki zamiast toggle) -->
+                <div class="app-card app-card--toggle" id="akt7-card-close">
+                  <div class="app-card__left">
+                    <div class="app-card__title">Zamykanie aplikacji</div>
+                    <div class="app-card__sub">Wymaga potwierdzenia hasłem administratora</div>
+                  </div>
+                  <i class="ti ti-lock" style="font-size:17px;color:var(--muted-foreground);flex-shrink:0;"></i>
+                </div>
+
+              </div><!-- /.app-cards -->
+
+            </div><!-- /.app-content -->
+          </div><!-- /.win-aizyl-body -->
+
+          <!-- Kursor animowany -->
+          <div class="cursor-icon cursor-icon--akt7" id="akt7-cursor">
+            <i class="ti ti-pointer"></i>
+          </div>
+
+          <!-- Password Gate — overlay zakrywający całe .win-aizyl-app -->
+          <div class="password-gate" id="akt7-password-gate">
+            <div class="password-gate-card">
+              <i class="ti ti-lock password-gate-card__icon"></i>
+              <div class="password-gate-card__title">Wymagane hasło administratora</div>
+              <div class="password-gate-card__sub" id="akt7-gate-sub">Aby wyłączyć Shadow AI Audit</div>
+              <div class="password-gate-input" id="akt7-gate-input">
+                <span class="password-gate-input__dots" id="akt7-gate-dots"></span>
+              </div>
+              <div class="password-gate-card__actions">
+                <button class="password-gate-btn password-gate-btn--cancel">Anuluj</button>
+                <button class="password-gate-btn password-gate-btn--confirm">Potwierdź</button>
+              </div>
+            </div>
+          </div><!-- /.password-gate -->
+
+        </div><!-- /.win-aizyl-app -->
+
+        <!-- PORÓWNANIE -->
+        <div class="comparison-summary comparison-summary--akt7" id="comparison-summary-07">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Każda próba wyłączenia ochrony — Shadow AI Audit, autostart, zamknięcie aplikacji — wymaga hasła administratora. Pracownik nie obejdzie zabezpieczeń przez przypadek ani celowo.</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>Każdy program można wyłączyć jednym kliknięciem. Ochrona trwa tylko tak długo, jak pracownikowi się to podoba.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKT 08 — FLOTA -->
+    <section class="akt akt-08" id="akt-8" data-akt="08">
+      <div class="container akt-inner akt-inner--08">
+        <span class="akt-label">AKT 08 // FLOTA</span>
+        <h2>AizylFleet — jeden panel, cała flota urządzeń w firmie.</h2>
+        <p class="akt-desc">Kontrolujesz ochronę zdalnie na każdym stanowisku, przeglądasz pełną historię alertów i Shadow AI Audit z każdego urządzenia, generujesz raporty indywidualne dla każdej maszyny lub raport zbiorczy dla całej floty — wszystko z jednego miejsca. Dostępne w planie Enterprise.</p>
+
+        <!-- AIZYL APP WINDOW — reużyj .win-aizyl-app z Aktów 5/6/7 -->
+        <div class="win-aizyl-app win-aizyl-app--akt8" id="win-aizyl-app-08">
+
+          <!-- Titlebar -->
+          <div class="win-aizyl-titlebar">
+            <span class="win-aizyl-brand">A I Z Y L</span>
+            <div class="win-aizyl-controls">
+              <button class="win-aizyl-btn win-aizyl-btn--min" aria-label="Minimalizuj">&#8722;</button>
+              <button class="win-aizyl-btn win-aizyl-btn--close" aria-label="Zamknij">&#215;</button>
+            </div>
+          </div>
+
+          <!-- Body: sidebar + content -->
+          <div class="win-aizyl-body">
+
+            <!-- Sidebar — aktywna ikona Fleet (ti-affiliate) podświetlona var(--primary) -->
+            <div class="app-sidebar">
+              <div class="app-sidebar__icons">
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-shield"></i>
+                </div>
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-clock"></i>
+                </div>
+                <div class="app-sidebar__icon">
+                  <span class="app-sidebar__letter">W</span>
+                </div>
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-zoom-scan"></i>
+                </div>
+                <div class="app-sidebar__icon app-sidebar__icon--active app-sidebar__icon--fleet">
+                  <i class="ti ti-sitemap"></i>
+                </div>
+              </div>
+              <div class="app-sidebar__bottom">
+                <div class="app-sidebar__icon">
+                  <i class="ti ti-settings"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="app-content">
+
+              <!-- Header: AizylFleet + podtytuł + przycisk raportu zbiorczego -->
+              <div class="app-content__header">
+                <div class="app-content__header-left">
+                  <div class="app-content__title">AizylFleet</div>
+                  <div class="app-content__date fleet-subtitle">6 stacji w sieci</div>
+                </div>
+                <button class="app-content__report-btn" id="akt8-btn-report">
+                  <i class="ti ti-file-text"></i>
+                  Generuj raport zbiorczy
+                </button>
+              </div>
+
+              <!-- Graf floty — węzeł master + 5 agentów na orbicie -->
+              <div class="fleet-graph" id="fleet-graph-08">
+
+                <!-- SVG linie połączeń (fleet-link) -->
+                <svg class="fleet-links-svg" id="fleet-links-svg-08" aria-hidden="true">
+                  <line class="fleet-link" id="fl-link-0" />
+                  <line class="fleet-link" id="fl-link-1" />
+                  <line class="fleet-link" id="fl-link-2" />
+                  <line class="fleet-link" id="fl-link-3" />
+                  <line class="fleet-link" id="fl-link-4" />
+                </svg>
+
+                <!-- Węzeł Master — centrum -->
+                <div class="fleet-node fleet-node--master" id="fleet-master">
+                  <div class="fleet-node__icon-wrap">
+                    <i class="ti ti-server"></i>
+                  </div>
+                  <span class="fleet-node__label">Master</span>
+                </div>
+
+                <!-- 5 węzłów Agent — na orbicie -->
+                <!-- 4 online (zielone), 1 offline (szare) -->
+                <div class="fleet-node fleet-node--agent fleet-node--online" id="fleet-agent-0" data-agent="0">
+                  <div class="fleet-node__icon-wrap">
+                    <i class="ti ti-device-desktop"></i>
+                  </div>
+                  <span class="fleet-node__label">Ania HR</span>
+                </div>
+
+                <div class="fleet-node fleet-node--agent fleet-node--online" id="fleet-agent-1" data-agent="1">
+                  <div class="fleet-node__icon-wrap">
+                    <i class="ti ti-device-desktop"></i>
+                  </div>
+                  <span class="fleet-node__label">Paula PR</span>
+                </div>
+
+                <div class="fleet-node fleet-node--agent fleet-node--online" id="fleet-agent-2" data-agent="2">
+                  <div class="fleet-node__icon-wrap">
+                    <i class="ti ti-device-desktop"></i>
+                  </div>
+                  <span class="fleet-node__label">Marek IT</span>
+                </div>
+
+                <div class="fleet-node fleet-node--agent fleet-node--online" id="fleet-agent-3" data-agent="3">
+                  <div class="fleet-node__icon-wrap">
+                    <i class="ti ti-device-desktop"></i>
+                  </div>
+                  <span class="fleet-node__label">Tomek Sprzedaż</span>
+                </div>
+
+                <!-- Offline — szare obramowanie -->
+                <div class="fleet-node fleet-node--agent fleet-node--offline" id="fleet-agent-4" data-agent="4">
+                  <div class="fleet-node__icon-wrap">
+                    <i class="ti ti-device-desktop"></i>
+                  </div>
+                  <span class="fleet-node__label">Kasia Księgowość</span>
+                </div>
+
+              </div><!-- /.fleet-graph -->
+
+              <!-- Panel boczny węzła agenta — wysuwany po kliknięciu -->
+              <div class="fleet-side-panel" id="fleet-side-panel-08">
+                <div class="fleet-side-panel__header">
+                  <i class="ti ti-device-desktop fleet-side-panel__icon"></i>
+                  <span class="fleet-side-panel__name" id="fleet-panel-name">Ania HR</span>
+                </div>
+                <div class="fleet-side-panel__items">
+                  <div class="ctx-item fleet-panel-item" id="fleet-panel-item-shield">
+                    <i class="ti ti-shield-off"></i>
+                    Wyłącz ochronę zdalnie
+                  </div>
+                  <div class="ctx-item fleet-panel-item fleet-panel-item--report" id="fleet-panel-item-report">
+                    <i class="ti ti-file-text"></i>
+                    Generuj raport
+                  </div>
+                </div>
+              </div><!-- /.fleet-side-panel -->
+
+            </div><!-- /.app-content -->
+          </div><!-- /.win-aizyl-body -->
+
+          <!-- Kursor animowany -->
+          <div class="cursor-icon cursor-icon--akt8" id="akt8-cursor">
+            <i class="ti ti-pointer"></i>
+          </div>
+
+          <!-- Toast przy węźle agenta — "Raport wygenerowany ✓" -->
+          <div class="toast toast--akt8-node" id="akt8-node-toast">
+            <i class="ti ti-circle-check toast__icon toast__icon--ok"></i>
+            <span>Raport wygenerowany ✓</span>
+          </div>
+
+          <!-- Toast przy przycisku raportu zbiorczego -->
+          <div class="toast toast--akt8-report" id="akt8-report-toast">
+            <i class="ti ti-circle-check toast__icon toast__icon--ok"></i>
+            <span>Raport zbiorczy floty wygenerowany ✓</span>
+          </div>
+
+          <!-- Miniaturka PDF raportu zbiorczego -->
+          <div class="pdf-preview-mini pdf-preview-mini--akt8" id="akt8-pdf-preview">
+            <div class="pdf-preview-mini__page">
+              <i class="ti ti-file-text pdf-preview-mini__icon"></i>
+              <span class="pdf-preview-mini__filename">fleet_report_czerwiec_2026.pdf</span>
+            </div>
+          </div>
+
+        </div><!-- /.win-aizyl-app -->
+
+        <!-- PORÓWNANIE -->
+        <div class="comparison-summary comparison-summary--akt8" id="comparison-summary-08">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Jeden panel pokazuje status każdej stacji w firmie — zdalne sterowanie, raporty indywidualne i zbiorcze bez chodzenia od komputera do komputera</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>IT nie ma wglądu w 50 stanowisk — każde z innym poziomem ryzyka, zero standardu, zero kontroli.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKT 09 — AIZYL AI -->
+    <section class="akt akt-09" id="akt-9" data-akt="09">
+      <div class="container akt-inner akt-inner--09">
+        <span class="akt-label">AKT 09 // AIZYL AI</span>
+        <h2>Lokalny model AI klasyfikuje kontekst — żadne dane nie wychodzą z urządzenia.</h2>
+        <p class="akt-desc">Zamiast wysyłać dane do chmury w celu analizy, Aizyl używa lokalnego modelu LLM działającego bezpośrednio na komputerze. Zero transferu, zero ryzyka. Model działa płynnie na zwykłym komputerze firmowym — bez serwerów, bez GPU, bez dodatkowej infrastruktury.</p>
+
+        <!-- AIZYL GUARDIAN APP WINDOW — bez sidebara, scena jako centrum uwagi -->
+        <div class="win-aizyl-app win-aizyl-app--akt9" id="win-aizyl-app-09">
+
+          <!-- Titlebar -->
+          <div class="win-aizyl-titlebar">
+            <span class="win-aizyl-brand">A I Z Y L</span>
+            <div class="win-aizyl-controls">
+              <button class="win-aizyl-btn win-aizyl-btn--min" aria-label="Minimalizuj">&#8722;</button>
+              <button class="win-aizyl-btn win-aizyl-btn--close" aria-label="Zamknij">&#215;</button>
+            </div>
+          </div>
+
+          <!-- Scena Guardiana — pełna szerokość, bez sidebara -->
+          <div class="guardian-scene" id="guardian-scene-09">
+
+            <!-- KONTENER 1: Kula cząsteczek (canvas) -->
+            <div class="guardian-sigil-wrap" id="guardian-sigil-09">
+
+              <canvas id="guardian-orb-canvas-09"></canvas>
+
+            </div><!-- /#guardian-sigil-09 -->
+
+            <!-- KONTENER 2: Fragment dokumentu z efektem typing -->
+            <div class="guardian-doc-wrap" id="guardian-doc-09">
+              <div class="guardian-doc-inner">
+                <div class="guardian-doc-title">UMOWA — §&nbsp;4. Strona zobowiązuje się do</div>
+                <div class="guardian-doc-text" id="guardian-doc-text-09">
+                  <span class="guardian-typing-text" id="guardian-typing-09"></span><span class="guardian-typing-cursor" id="guardian-typing-cursor-09"></span>
+                </div>
+
+                <!-- KONTENER 3: Trzy warstwy analizy nad dokumentem -->
+                <div class="guardian-layers" id="guardian-layers-09">
+                  <!-- Warstwa 1: Struktura -->
+                  <div class="guardian-layer guardian-layer--structure" id="guardian-layer-structure-09">
+                    <span class="guardian-layer__label">struktura</span>
+                  </div>
+                  <!-- Warstwa 2: Znaczenie -->
+                  <div class="guardian-layer guardian-layer--meaning" id="guardian-layer-meaning-09">
+                    <span class="guardian-layer__label">znaczenie</span>
+                  </div>
+                  <!-- Warstwa 3: Kontekst -->
+                  <div class="guardian-layer guardian-layer--context" id="guardian-layer-context-09">
+                    <span class="guardian-layer__label">kontekst</span>
+                  </div>
+                </div><!-- /#guardian-layers-09 -->
+
+              </div>
+            </div><!-- /#guardian-doc-09 -->
+
+            <!-- PANEL DETEKCJI — trzeci element flex, łamie się do nowej linii (width: 100%) -->
+            <div class="guardian-detection-panel" id="guardian-detection-09">
+              <div class="guardian-detection-row guardian-detection-row--risk">
+                <div class="guardian-detection-tag guardian-detection-tag--risk">Wykryto</div>
+                <div class="guardian-detection-row__content">
+                  <i class="ti ti-alert-triangle"></i>
+                  <span>Wykryto: wynagrodzenie pracownika — dane osobowe i finansowe</span>
+                </div>
+              </div>
+              <div class="guardian-detection-row guardian-detection-row--safe">
+                <div class="guardian-detection-tag guardian-detection-tag--safe">Bezpieczne</div>
+                <div class="guardian-detection-row__content">
+                  <i class="ti ti-shield-check"></i>
+                  <span>Numer referencyjny zamówienia — nie są to dane osobowe</span>
+                </div>
+              </div>
+            </div><!-- /#guardian-detection-09 -->
+
+          </div><!-- /#guardian-scene-09 -->
+
+        </div><!-- /#win-aizyl-app-09 -->
+
+        <!-- PORÓWNANIE -->
+        <div class="comparison-summary comparison-summary--akt9" id="comparison-summary-09">
+          <div class="scan-result scan-result--ok">
+            <div class="panel-label-tag">Z Aizyl Guardian</div>
+            <div class="scan-result__row">
+              <i class="ti ti-shield-check"></i>
+              <span>Lokalny model rozumie kontekst i niuanse dokumentu — klasyfikuje ryzyko na podstawie znaczenia, nie tylko słów kluczowych</span>
+            </div>
+          </div>
+          <div class="scan-result scan-result--danger">
+            <div class="panel-label-tag panel-label-tag--danger">Bez Aizyl</div>
+            <div class="scan-result__row">
+              <i class="ti ti-alert-triangle"></i>
+              <span>Narzędzie czyta tylko słowa — bez zrozumienia kontekstu prawnego, intencji stron ani ryzyka ukrytego w sformułowaniach</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section id="cta-final" data-waitlist="true">
+      <h2 class="cta-final-heading">Każdy dzień bez Aizyla to dzień w którym nie wiesz co dzieje się z danymi twoich klientów.</h2>
+      <p class="cta-final-sub">Bądź pierwszy. Dostaniesz powiadomienie w dniu launchu.</p>
+      <div class="waitlist-form"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="010c5d02-a0dd-42bb-9bc9-420670796e59"></script></div>
+    </section>
+
+  </main>
+
+  <!-- Dot Navigation -->
+  <nav class="dot-nav" aria-label="Nawigacja aktów">
+    <a class="dot" data-akt="01" href="#akt-1" aria-label="Akt 01 — Schowek">
+      <span class="dot-num">01</span>
+    </a>
+    <a class="dot" data-akt="02" href="#akt-2" aria-label="Akt 02 — Pliki">
+      <span class="dot-num">02</span>
+    </a>
+    <a class="dot" data-akt="03" href="#akt-3" aria-label="Akt 03 — Menu kontekstowe">
+      <span class="dot-num">03</span>
+    </a>
+    <a class="dot" data-akt="04" href="#akt-4" aria-label="Akt 04 — Pasek">
+      <span class="dot-num">04</span>
+    </a>
+    <a class="dot" data-akt="05" href="#akt-5" aria-label="Akt 05 — Shadow AI">
+      <span class="dot-num">05</span>
+    </a>
+    <a class="dot" data-akt="06" href="#akt-6" aria-label="Akt 06 — Historia">
+      <span class="dot-num">06</span>
+    </a>
+    <a class="dot" data-akt="07" href="#akt-7" aria-label="Akt 07 — Ochrona dostępu">
+      <span class="dot-num">07</span>
+    </a>
+    <a class="dot" data-akt="08" href="#akt-8" aria-label="Akt 08 — Flota">
+      <span class="dot-num">08</span>
+    </a>
+    <a class="dot" data-akt="09" href="#akt-9" aria-label="Akt 09 — Aizyl AI">
+      <span class="dot-num">09</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">A I Z Y L</span>
+        <span class="footer-copy">© 2025 Aizyl DLP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/polityka-prywatnosci">Polityka prywatności</a>
+        <a href="/regulamin">Regulamin</a>
+        <a href="mailto:kontakt@aizyl.pl">kontakt@aizyl.pl</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

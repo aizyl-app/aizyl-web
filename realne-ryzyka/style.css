@@ -1,0 +1,866 @@
+/* ============================================================
+   REALNE RYZYKA — ZMIENNE DODATKOWE
+   ============================================================ */
+:root {
+  --background:        #E8E6E1;
+  --card:              #F5F4F1;
+  --primary:           #0B6951;
+  --foreground:        #1A1A1A;
+  --muted-foreground:  #6B7280;
+  --border:            #D4D1CB;
+  --secondary:         #D4D1CB;
+  --radius:            0.25rem;
+  --danger:            #A32D2D;
+  --warning:           #C2862E;
+  --font-mono:         'Space Mono', monospace;
+}
+
+/* ============================================================
+   NAV — ACTIVE LINK (brak aktywnego linku na tej stronie,
+   ale zostawiamy selektor dla spójności z resztą projektu)
+   ============================================================ */
+.nav-links a.active {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* ============================================================
+   MAIN WRAPPER
+   ============================================================ */
+.rr-main {
+  position: relative;
+}
+
+/* ============================================================
+   NAGŁÓWEK STRONY
+   ============================================================ */
+.rr-header {
+  padding: 100px 30px 64px;
+  max-width: 760px;
+}
+
+.rr-heading {
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--foreground);
+  margin-bottom: 20px;
+}
+
+.rr-meta {
+  font-size: 17px;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+/* ============================================================
+   RISK SCENARIO — SEKCJA SCENARIUSZA
+   ============================================================ */
+.risk-scenario {
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.risk-scenario.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Naprzemienne tła — parzyste dostaję var(--card) */
+.risk-scenario--01 { background: var(--background); }
+.risk-scenario--02 { background: var(--card); }
+.risk-scenario--03 { background: var(--background); }
+.risk-scenario--04 { background: var(--card); }
+.risk-scenario--05 { background: var(--background); }
+
+/* ============================================================
+   RISK INNER — DWUKOLUMNOWY UKŁAD
+   ============================================================ */
+.risk-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 56px;
+}
+
+/* Odwrócona kolejność kolumn na co drugiej sekcji */
+.risk-scenario--reverse .risk-inner {
+  flex-direction: row-reverse;
+}
+
+/* ============================================================
+   RISK COL — KOLUMNY
+   ============================================================ */
+.risk-col--text {
+  flex: 0 0 80%;
+  max-width: 80%;
+  min-width: 0;
+}
+
+.risk-col--visual {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   RISK ICON ACCENT — prosta ikona w okrągłym tle
+   ============================================================ */
+.risk-icon-accent {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.risk-icon-accent .ti {
+  font-size: 72px;
+  color: color-mix(in srgb, var(--primary) 55%, transparent);
+  line-height: 1;
+}
+
+/* ============================================================
+   RISK BADGE — PLAKIETKA BRANŻY
+   ============================================================ */
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px 4px 8px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 28%, transparent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.risk-badge .ti {
+  font-size: 14px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   RISK HEADING
+   ============================================================ */
+.risk-col--text h2 {
+  font-size: clamp(20px, 2.8vw, 30px);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--foreground);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   RISK PAIN / SOLUTION — PARAGRAFY
+   ============================================================ */
+.risk-pain {
+  font-size: 15px;
+  color: var(--muted-foreground);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.risk-solution {
+  font-size: 15px;
+  color: var(--foreground);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   RISK FEATURE TAG — TAG FUNKCJI (własna, niezależna klasa)
+   ============================================================ */
+.risk-feature-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 10px 2px 7px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--primary);
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.risk-feature-tag .ti {
+  font-size: 12px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   COMPARISON MINI — BLOK Z/BEZ AIZYL (własna, niezależna klasa)
+   ============================================================ */
+.comparison-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.comparison-mini__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.comparison-mini__label {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.comparison-mini__label--ok {
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  border: 1px solid color-mix(in srgb, #22c55e 35%, transparent);
+  color: #22c55e;
+}
+
+.comparison-mini__label--danger {
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
+  color: var(--danger);
+}
+
+.comparison-mini__row--ok {
+  background: color-mix(in srgb, #22c55e 8%, transparent);
+  border: 1px solid color-mix(in srgb, #22c55e 28%, transparent);
+  color: #22c55e;
+}
+
+.comparison-mini__row--danger {
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--danger) 28%, transparent);
+  color: var(--danger);
+}
+
+.comparison-mini__text {
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* ============================================================
+   RISK VISUAL CARD — KARTA WIZUALNA (mockup okna)
+   ============================================================ */
+.risk-visual-card {
+  position: relative;
+  background: var(--card, #F5F4F1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.10),
+    0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+/* ============================================================
+   RVC TITLEBAR — PASEK TYTUŁU KARTY
+   ============================================================ */
+.rvc-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  height: 30px;
+  background: #2b579a;
+  flex-shrink: 0;
+}
+
+.rvc-titlebar .ti {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
+}
+
+.rvc-titlebar > span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.9);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Wariant — pasek aplikacji Aizyl */
+.rvc-titlebar--app {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--card));
+  border-bottom: 1px solid var(--border);
+}
+
+.rvc-titlebar--app > span {
+  color: var(--foreground);
+}
+
+.rvc-app-brand {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  color: var(--foreground);
+  flex: 1;
+}
+
+/* ============================================================
+   RVC DOTS — PRZYCISKI OKNA (macOS-style)
+   ============================================================ */
+.rvc-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.rvc-dots span {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.rvc-dots span:nth-child(1) { background: #ff5f57; }
+.rvc-dots span:nth-child(2) { background: #f5a623; }
+.rvc-dots span:nth-child(3) { background: #27c93f; }
+
+/* ============================================================
+   RVC BODY — TREŚĆ KARTY
+   ============================================================ */
+.rvc-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rvc-body--code {
+  background: #1e1e2e;
+  gap: 4px;
+}
+
+/* ============================================================
+   RVC LINE — LINIA DOKUMENTU
+   ============================================================ */
+.rvc-line--title {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  letter-spacing: 0.04em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   RVC FIELD — POLE DOKUMENTU
+   ============================================================ */
+.rvc-field {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.rvc-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: #888;
+  min-width: 72px;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+.rvc-value {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.rvc-value--redacted {
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   RVC PLACEHOLDER — LINIA ZASTĘPCZA
+   ============================================================ */
+.rvc-placeholder {
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   RVC BADGE — BADGE NA DOLE KARTY
+   ============================================================ */
+.rvc-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+  border-top: 1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+}
+
+.rvc-badge .ti {
+  font-size: 13px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.rvc-badge--warn {
+  background: color-mix(in srgb, var(--warning) 8%, var(--card));
+  border-top-color: color-mix(in srgb, var(--warning) 22%, transparent);
+  color: var(--warning);
+}
+
+.rvc-badge--warn .ti {
+  color: var(--warning);
+}
+
+/* ============================================================
+   RVC FILE LIST — LISTA PLIKÓW (scenariusz 02)
+   ============================================================ */
+.rvc-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rvc-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted-foreground);
+  background: transparent;
+  transition: background 0.15s ease;
+}
+
+.rvc-file .ti {
+  font-size: 16px;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.rvc-file span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rvc-file--alert {
+  background: color-mix(in srgb, var(--warning) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--warning) 28%, transparent);
+  color: var(--warning);
+}
+
+.rvc-file--alert .ti {
+  color: var(--warning);
+}
+
+.rvc-file__warn {
+  font-size: 14px;
+  color: var(--warning);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ============================================================
+   RVC APP HEADER — NAGŁÓWEK SEKCJI W APLIKACJI
+   ============================================================ */
+.rvc-app-header {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   RVC SERVICE LIST — LISTA SERWISÓW AI (scenariusz 03)
+   ============================================================ */
+.rvc-service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rvc-service {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--foreground) 4%, var(--card));
+  border: 1px solid var(--border);
+}
+
+.rvc-service .ti {
+  font-size: 14px;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.rvc-service__name {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--foreground);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rvc-service__count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   RVC ALERT LIST — LISTA ALERTÓW (scenariusz 04)
+   ============================================================ */
+.rvc-alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rvc-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+.rvc-alert .ti {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.rvc-alert--ok {
+  background: color-mix(in srgb, #22c55e 8%, transparent);
+  border-color: color-mix(in srgb, #22c55e 25%, transparent);
+}
+
+.rvc-alert--ok .ti {
+  color: #22c55e;
+}
+
+.rvc-alert--warn {
+  background: color-mix(in srgb, var(--warning) 8%, transparent);
+  border-color: color-mix(in srgb, var(--warning) 25%, transparent);
+}
+
+.rvc-alert--warn .ti {
+  color: var(--warning);
+}
+
+.rvc-alert__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.rvc-alert__event {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rvc-alert__date {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--muted-foreground);
+}
+
+.rvc-alert__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rvc-alert__badge--ok {
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  border: 1px solid color-mix(in srgb, #22c55e 30%, transparent);
+  color: #22c55e;
+}
+
+.rvc-alert__badge--warn {
+  background: color-mix(in srgb, var(--warning) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--warning) 30%, transparent);
+  color: var(--warning);
+}
+
+/* ============================================================
+   RVC CODE — BLOK KODU (scenariusz 05)
+   ============================================================ */
+.rvc-code-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  padding: 2px 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.rvc-code-key {
+  color: #7ec8e3;
+  min-width: 88px;
+  flex-shrink: 0;
+}
+
+.rvc-code-eq {
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0 4px;
+}
+
+.rvc-code-val {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.rvc-code-val--secret {
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   CTA FINAL — skopiowany z głównego index.html
+   (własna, kompletna definicja — nie importowana)
+   ============================================================ */
+#cta-final {
+  background: var(--primary);
+  padding: 100px 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.cta-final-heading {
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: 500;
+  color: var(--background);
+  max-width: 680px;
+  line-height: 1.25;
+}
+
+.cta-final-sub {
+  font-size: 15px;
+  color: color-mix(in srgb, var(--background) 65%, transparent);
+}
+
+.waitlist-form {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ============================================================
+   SITE FOOTER — skopiowany z jak-to-dziala/index.html
+   (własna, kompletna definicja)
+   ============================================================ */
+.site-footer {
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-logo {
+  font-weight: 200;
+  font-size: 16px;
+  letter-spacing: 0.5em;
+  color: var(--foreground);
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-links a:hover {
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤ 960px)
+   ============================================================ */
+@media (max-width: 960px) {
+  .risk-inner {
+    gap: 36px;
+  }
+
+  .risk-col--visual {
+    flex: 0 0 300px;
+    max-width: 300px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤ 720px)
+   ============================================================ */
+@media (max-width: 720px) {
+  .rr-header {
+    padding: 72px 30px 48px;
+  }
+
+  .rr-heading {
+    font-size: clamp(24px, 7vw, 36px);
+  }
+
+  .risk-scenario {
+    padding: 56px 0;
+  }
+
+  .risk-inner {
+    flex-direction: column !important;
+    gap: 32px;
+  }
+
+  /* Wymuś normalną kolejność na mobile niezależnie od --reverse */
+  .risk-scenario--reverse .risk-inner {
+    flex-direction: column !important;
+  }
+
+  .risk-col--visual {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .risk-col--text h2 {
+    font-size: clamp(18px, 5.5vw, 26px);
+  }
+
+  .comparison-mini__row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .rr-header {
+    padding: 56px 30px 36px;
+  }
+
+  .risk-badge {
+    font-size: 9px;
+  }
+
+  .risk-pain,
+  .risk-solution {
+    font-size: 14px;
+  }
+
+  .comparison-mini__text {
+    font-size: 12px;
+  }
+}

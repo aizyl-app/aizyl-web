@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
     planFeatured.scrollIntoView({ inline: 'center', behavior: 'instant', block: 'nearest' });
   }
 
+  // Nav toggle — hamburger menu na mobile
+  document.getElementById('nav-toggle')?.addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('is-open');
+    this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    this.classList.toggle('is-active');
+  });
+
   // Nav scroll — dodaje klasę .scrolled po przewinięciu 20px
   const nav = document.getElementById('site-nav');
   if (nav) {

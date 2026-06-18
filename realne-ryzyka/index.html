@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pięć realnych sytuacji z różnych branż, w których brak Aizyl DLP mógł skończyć się wyciekiem danych i karą RODO." />
+  <title>Realne ryzyka — A I Z Y L</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Realne ryzyka — A I Z Y L" />
+  <meta property="og:description" content="Pięć sytuacji z różnych branż, w których jedno kliknięcie mogło skończyć się wyciekiem danych." />
+  <meta property="og:image" content="https://aizyl.pl/assets/og-image.png" />
+  <meta property="og:url" content="https://aizyl.pl/realne-ryzyka" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Realne ryzyka — A I Z Y L" />
+  <meta name="twitter:description" content="Pięć sytuacji z różnych branż, w których jedno kliknięcie mogło skończyć się wyciekiem danych." />
+  <meta name="twitter:image" content="https://aizyl.pl/assets/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/aizyl_logo_noactive.png">
+  <link rel="apple-touch-icon" href="../assets/aizyl_logo_noactive.png">
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Google Fonts: Space Mono -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="site-nav" id="site-nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">A I Z Y L</a>
+      <ul class="nav-links">
+        <li><a href="/">Strona główna</a></li>
+        <li><a href="/jak-to-dziala">Jak to działa</a></li>
+        <li><a href="/realne-ryzyka" class="active">Realne ryzyka</a></li>
+        <li><a href="/#features">Funkcje</a></li>
+        <li><a href="/#pricing">Cennik</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+      <a href="/#cta-final" class="btn btn-primary nav-cta"><span class="nav-cta-full">Zapisz się na listę oczekujących →</span><span class="nav-cta-short">Zapisz się</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="rr-main">
+
+    <!-- NAGŁÓWEK STRONY -->
+    <div class="container rr-header">
+      <h1 class="rr-heading">Realne ryzyka, w których Aizyl jest niezbędny.</h1>
+      <p class="rr-meta">Pięć sytuacji z różnych branż, w których jedno kliknięcie mogło skończyć się wyciekiem danych.</p>
+    </div>
+
+    <!-- SCENARIUSZ 01 — KANCELARIA PRAWNA -->
+    <section class="risk-scenario risk-scenario--01" id="scenario-1">
+      <div class="container risk-inner">
+
+        <div class="risk-col risk-col--text">
+          <div class="risk-badge">
+            <i class="ti ti-gavel"></i>
+            <span>Kancelaria prawna</span>
+          </div>
+          <h2>Jest 18:30, ugoda ma być gotowa na rano. Prawnik wkleja ostatni paragraf do ChatGPT — razem z nim leci nazwisko klienta, dane strony przeciwnej, kwota roszczenia.</h2>
+          <p class="risk-pain">Nikt nie sprawdza takich rzeczy po godzinach, a tajemnica adwokacka nie ma wyjątku dla pośpiechu.</p>
+          <p class="risk-solution">Aizyl wyłapuje to w schowku, zanim tekst trafi do okna czatu, i sam zamienia dane osobowe na czytelny placeholder — prawnik dostaje to, czego potrzebował, bez wysyłania niczego, czego nie powinien. <span class="risk-feature-tag"><i class="ti ti-replace"></i> Anonimizacja tekstu</span></p>
+
+          <div class="comparison-mini">
+            <div class="comparison-mini__row comparison-mini__row--ok">
+              <span class="comparison-mini__label comparison-mini__label--ok">Z Aizyl</span>
+              <span class="comparison-mini__text">Dane osobowe zamienione na placeholder lokalnie — AI dostaje bezpieczny tekst, tajemnica adwokacka zachowana</span>
+            </div>
+            <div class="comparison-mini__row comparison-mini__row--danger">
+              <span class="comparison-mini__label comparison-mini__label--danger">Bez Aizyl</span>
+              <span class="comparison-mini__text">Nazwisko klienta, dane strony przeciwnej i kwota roszczenia trafiają do ChatGPT — naruszenie RODO Art. 44</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="risk-col risk-col--visual" aria-hidden="true">
+          <div class="risk-icon-accent">
+            <i class="ti ti-gavel"></i>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SCENARIUSZ 02 — PRZYCHODNIA -->
+    <section class="risk-scenario risk-scenario--02 risk-scenario--reverse" id="scenario-2">
+      <div class="container risk-inner">
+
+        <div class="risk-col risk-col--text">
+          <div class="risk-badge">
+            <i class="ti ti-stethoscope"></i>
+            <span>Przychodnia</span>
+          </div>
+          <h2>Rejestratorka robi zrzut ekranu z karty pacjenta, bo łatwiej wkleić obrazek do AI niż przepisywać wszystko ręcznie.</h2>
+          <p class="risk-pain">Na zrzucie jest imię, PESEL, diagnoza — i teraz to wszystko leży w historii rozmów zewnętrznego serwisu, którego nikt w placówce nie kontroluje. Dane medyczne to jedna z najbardziej chronionych kategorii w RODO, a wyciek tego kalibru trudno się tłumaczy przed inspektorem.</p>
+          <p class="risk-solution">Aizyl czyta obraz tak samo jak tekst — wykrywa dane pacjenta na zrzucie ekranu i blokuje wklejenie, zanim zdąży opuścić komputer. <span class="risk-feature-tag"><i class="ti ti-photo-scan"></i> OCR / anonimizacja obrazu</span></p>
+
+          <div class="comparison-mini">
+            <div class="comparison-mini__row comparison-mini__row--ok">
+              <span class="comparison-mini__label comparison-mini__label--ok">Z Aizyl</span>
+              <span class="comparison-mini__text">Dane pacjenta wykryte na zrzucie ekranu — wklejenie zablokowane, PESEL i diagnoza nie opuszczają komputera</span>
+            </div>
+            <div class="comparison-mini__row comparison-mini__row--danger">
+              <span class="comparison-mini__label comparison-mini__label--danger">Bez Aizyl</span>
+              <span class="comparison-mini__text">Imię, PESEL i diagnoza w historii rozmów zewnętrznego serwisu — naruszenie RODO Art. 9 (dane szczególnej kategorii)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="risk-col risk-col--visual" aria-hidden="true">
+          <div class="risk-icon-accent">
+            <i class="ti ti-stethoscope"></i>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SCENARIUSZ 03 — SOFTWARE HOUSE -->
+    <section class="risk-scenario risk-scenario--03" id="scenario-3">
+      <div class="container risk-inner">
+
+        <div class="risk-col risk-col--text">
+          <div class="risk-badge">
+            <i class="ti ti-code"></i>
+            <span>Software house</span>
+          </div>
+          <h2>Programista siedzi nad błędem od dwóch godzin i wkleja fragment kodu do Copilota. W tym fragmencie jest klucz API klienta — ten sam, który otwiera dostęp do jego infrastruktury produkcyjnej.</h2>
+          <p class="risk-pain">Nikt nie robi tego ze złej woli, po prostu kod i sekrety często leżą w tym samym pliku.</p>
+          <p class="risk-solution">W tej firmie Aizyl działa w trybie ostrzegania, nie blokady — programista widzi alert w momencie wklejania i sam decyduje, czy to bezpieczne, zamiast wysłać klucz dalej bez świadomości, co właśnie się stało. <span class="risk-feature-tag"><i class="ti ti-bell-ringing"></i> Tryb ostrzegania</span></p>
+
+          <div class="comparison-mini">
+            <div class="comparison-mini__row comparison-mini__row--ok">
+              <span class="comparison-mini__label comparison-mini__label--ok">Z Aizyl</span>
+              <span class="comparison-mini__text">Klucz API wykryty w schowku — alert przed wklejeniem, programista świadomie decyduje co wysyła</span>
+            </div>
+            <div class="comparison-mini__row comparison-mini__row--danger">
+              <span class="comparison-mini__label comparison-mini__label--danger">Bez Aizyl</span>
+              <span class="comparison-mini__text">Klucz do infrastruktury produkcyjnej klienta trafia do Copilota — konieczna rotacja, potencjalny incydent bezpieczeństwa</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="risk-col risk-col--visual" aria-hidden="true">
+          <div class="risk-icon-accent">
+            <i class="ti ti-code"></i>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SCENARIUSZ 04 — DZIAŁ HR -->
+    <section class="risk-scenario risk-scenario--04 risk-scenario--reverse" id="scenario-4">
+      <div class="container risk-inner">
+
+        <div class="risk-col risk-col--text">
+          <div class="risk-badge">
+            <i class="ti ti-users"></i>
+            <span>Dział HR</span>
+          </div>
+          <h2>Trwa redukcja etatów. HR wkleja do AI cały arkusz z wynagrodzeniami i ocenami, żeby szybciej napisać dokumenty.</h2>
+          <p class="risk-pain">To nie jeden wyciek — to dane całego zespołu w jednym pliku, w jednej chwili nieuwagi.</p>
+          <p class="risk-solution">Folder z dokumentacją kadrową jest pod stałą obserwacją Watchdoga Aizyla — każdy plik, który tam wpada albo się zmienia, jest sprawdzany automatycznie, więc HR dostaje alert, zanim ktokolwiek zdąży go wysłać dalej. <span class="risk-feature-tag"><i class="ti ti-eye"></i> Watchdog</span></p>
+
+          <div class="comparison-mini">
+            <div class="comparison-mini__row comparison-mini__row--ok">
+              <span class="comparison-mini__label comparison-mini__label--ok">Z Aizyl</span>
+              <span class="comparison-mini__text">Watchdog wykrywa plik z danymi kadrowymi — alert zanim ktokolwiek zdąży go wysłać do zewnętrznego AI</span>
+            </div>
+            <div class="comparison-mini__row comparison-mini__row--danger">
+              <span class="comparison-mini__label comparison-mini__label--danger">Bez Aizyl</span>
+              <span class="comparison-mini__text">Wynagrodzenia i oceny całego zespołu w zewnętrznym serwisie AI — masowy wyciek danych pracowniczych</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="risk-col risk-col--visual" aria-hidden="true">
+          <div class="risk-icon-accent">
+            <i class="ti ti-users"></i>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SCENARIUSZ 05 — BIURO RACHUNKOWE -->
+    <section class="risk-scenario risk-scenario--05" id="scenario-5">
+      <div class="container risk-inner">
+
+        <div class="risk-col risk-col--text">
+          <div class="risk-badge">
+            <i class="ti ti-calculator"></i>
+            <span>Biuro rachunkowe</span>
+          </div>
+          <h2>Księgowa zamyka miesiąc dla dziesięciu klientów na raz i wkleja zestawienie finansowe do AI, żeby szybciej zliczyć podsumowanie.</h2>
+          <p class="risk-pain">To nie są dane jednej firmy, to dane dziesięciu różnych podmiotów, z których każdy ma prawo oczekiwać, że nikt nie wyśle jego liczb dalej bez pytania.</p>
+          <p class="risk-solution">Czasem taki plik leży poza folderem, który biuro monitoruje na stałe — wtedy wystarczy kliknięcie prawym przyciskiem myszy, żeby Aizyl sprawdził go na żądanie, zanim trafi gdziekolwiek dalej. <span class="risk-feature-tag"><i class="ti ti-mouse-2"></i> Menu kontekstowe</span></p>
+
+          <div class="comparison-mini">
+            <div class="comparison-mini__row comparison-mini__row--ok">
+              <span class="comparison-mini__label comparison-mini__label--ok">Z Aizyl</span>
+              <span class="comparison-mini__text">Skan na żądanie prawym przyciskiem — dane dziesięciu klientów sprawdzone lokalnie przed wysłaniem</span>
+            </div>
+            <div class="comparison-mini__row comparison-mini__row--danger">
+              <span class="comparison-mini__label comparison-mini__label--danger">Bez Aizyl</span>
+              <span class="comparison-mini__text">NIP-y i salda dziesięciu firm w zewnętrznym AI — każdy klient narażony bez wiedzy i zgody</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="risk-col risk-col--visual" aria-hidden="true">
+          <div class="risk-icon-accent">
+            <i class="ti ti-calculator"></i>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section id="cta-final" data-waitlist="true">
+      <h2 class="cta-final-heading">Każdy dzień bez Aizyla to dzień w którym nie wiesz co dzieje się z danymi twoich klientów.</h2>
+      <p class="cta-final-sub">Bądź pierwszy. Dostaniesz powiadomienie w dniu launchu.</p>
+      <div class="waitlist-form"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="010c5d02-a0dd-42bb-9bc9-420670796e59"></script></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">A I Z Y L</span>
+        <span class="footer-copy">© 2025 Aizyl DLP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/polityka-prywatnosci">Polityka prywatności</a>
+        <a href="/regulamin">Regulamin</a>
+        <a href="mailto:kontakt@aizyl.pl">kontakt@aizyl.pl</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // IntersectionObserver — fade-in sekcji przy scrollu
+    (function () {
+      var scenarios = document.querySelectorAll('.risk-scenario');
+      if (!scenarios.length) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      scenarios.forEach(function (el) {
+        observer.observe(el);
+      });
+
+      // Nav scroll shadow
+      var nav = document.getElementById('site-nav');
+      if (nav) {
+        window.addEventListener('scroll', function () {
+          nav.classList.toggle('scrolled', window.scrollY > 8);
+        }, { passive: true });
+      }
+
+      // Hamburger toggle
+      document.getElementById('nav-toggle')?.addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('is-open');
+        this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+        this.classList.toggle('is-active');
+      });
+    })();
+  </script>
+
+</body>
+</html>
