@@ -15,6 +15,28 @@ document.addEventListener('DOMContentLoaded', () => {
     planFeatured.scrollIntoView({ inline: 'center', behavior: 'instant', block: 'nearest' });
   }
 
+  // Pricing toggle — przełącznik Miesięcznie / Rocznie
+  const btnMonthly = document.getElementById('pricing-btn-monthly');
+  const btnYearly  = document.getElementById('pricing-btn-yearly');
+  if (btnMonthly && btnYearly) {
+    const blocksMonthly = document.querySelectorAll('[data-pricing="monthly"]');
+    const blocksYearly  = document.querySelectorAll('[data-pricing="yearly"]');
+
+    btnMonthly.addEventListener('click', () => {
+      blocksMonthly.forEach((el) => el.classList.remove('pricing-price-block--hidden'));
+      blocksYearly.forEach((el)  => el.classList.add('pricing-price-block--hidden'));
+      btnMonthly.classList.add('pricing-toggle-btn--active');
+      btnYearly.classList.remove('pricing-toggle-btn--active');
+    });
+
+    btnYearly.addEventListener('click', () => {
+      blocksYearly.forEach((el)  => el.classList.remove('pricing-price-block--hidden'));
+      blocksMonthly.forEach((el) => el.classList.add('pricing-price-block--hidden'));
+      btnYearly.classList.add('pricing-toggle-btn--active');
+      btnMonthly.classList.remove('pricing-toggle-btn--active');
+    });
+  }
+
   // Nav toggle — hamburger menu na mobile
   document.getElementById('nav-toggle')?.addEventListener('click', function() {
     document.querySelector('.nav-links').classList.toggle('is-open');

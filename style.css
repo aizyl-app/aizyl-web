@@ -819,6 +819,114 @@ a:hover {
 }
 
 /* ============================================================
+   PRICING — PRZEŁĄCZNIK OKRESU ROZLICZENIOWEGO
+   ============================================================ */
+
+/* Kontener przełącznika — wyśrodkowany, odstęp od siatki kart */
+.pricing-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+/* Przyciski segmentowe */
+.pricing-toggle-btn {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 9px 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pricing-toggle-btn:first-child {
+  border-radius: var(--radius) 0 0 var(--radius);
+  border-right: none;
+}
+
+.pricing-toggle-btn:last-child {
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* Stan aktywny */
+.pricing-toggle-btn--active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* Badge oszczędności */
+.pricing-toggle-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: var(--radius);
+  background: rgba(11, 105, 81, 0.12);
+  color: var(--primary);
+  line-height: 1.4;
+}
+
+/* Badge gdy przycisk aktywny — odwrócone kolory */
+.pricing-toggle-btn--active .pricing-toggle-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+/* ============================================================
+   PRICING — BLOKI CEN W KARTACH
+   ============================================================ */
+
+/* Blok ceny (wspólny wrapper) */
+.pricing-price-block {
+  margin-bottom: 4px;
+}
+
+/* Główna kwota — identyczna z poprzednią ceną: 32px, var(--primary) */
+.pricing-amount {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--primary);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+/* Okres "/seat/mies." — mniejszy, szary */
+.pricing-period {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+/* Wiersz roczny pod ceną — mały, szary */
+.pricing-annual-note {
+  font-size: 12px;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Wyróżniona kwota oszczędności */
+.pricing-saving {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Klasa modyfikująca — ukrywa blok */
+.pricing-price-block--hidden {
+  display: none;
+}
+
+/* ============================================================
    FAQ — ACCORDION
    ============================================================ */
 #faq {
