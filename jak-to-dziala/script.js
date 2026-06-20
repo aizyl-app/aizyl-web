@@ -344,6 +344,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
       });
       prevRedacted.fill(false);
 
+      if (window.innerWidth <= 860) return;
+
       if (beam) gsap.set(beam, { top: -(beam.offsetHeight || 28) + 'px', opacity: 1 });
       if (badge) gsap.set(badge, { opacity: 0 });
 
@@ -469,6 +471,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
       /* Usuń stare ping-ringi */
       akt2.querySelectorAll('.ping-ring').forEach(function (r) { r.remove(); });
+
+      if (window.innerWidth <= 860) return;
 
       /* Utwórz ping-ring dla nowego pliku */
       var ringNew = fnENew ? createPingRing(fnENew) : null;
@@ -744,6 +748,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
       /* Porównanie — ukryte */
       if (comparison3) gsap.set(comparison3, { opacity: 0, visibility: 'hidden' });
 
+      if (window.innerWidth <= 860) return;
+
       /* ---- Oblicz pozycje docelowe ---- */
 
       /* Pozycja pliku głównego względem .win-explorer */
@@ -955,6 +961,9 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
          więc left = offsetLeft wartości PESEL, width = offsetWidth wartości PESEL */
       var peselValueEl = akt4.querySelector('#word-pesel-value');
       var selLeft  = 0;
+
+      if (window.innerWidth <= 860) return;
+
       var selWidth = 0;
       if (wordSel && peselValueEl) {
         selLeft  = peselValueEl.offsetLeft;
@@ -1354,7 +1363,9 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
         if (servicesList) servicesList.innerHTML = '';
         rowEls = [];
         rowVisible = [false, false, false, false];
-  
+
+        if (window.innerWidth <= 860) return;
+
         /* Wstrzyknij wiersze (startowo ukryte) */
         SERVICES.forEach(function (svc) {
           var row = createServiceRow(svc);
@@ -1568,6 +1579,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
       /* Comparison — ukryte */
       if (comparison6) gsap.set(comparison6, { opacity: 0, visibility: 'hidden' });
 
+      if (window.innerWidth <= 860) return;
+
       /* ---- Oblicz pozycję przycisku "Generuj raport PDF" ---- */
       var posBtn = { x: 700, y: 30 };
       if (btnPdf && winApp) {
@@ -1731,6 +1744,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
         if (_track) gsap.set(_track, { backgroundColor: '#0b6951' });
         if (_thumb) gsap.set(_thumb, { left: 'calc(100% - 19px)' });
       }
+
+      if (window.innerWidth <= 860) return;
 
       /* Kursor — ukryty, pozycja startowa */
       if (cursor7) gsap.set(cursor7, { opacity: 0, x: 0, y: 0, scale: 1 });
@@ -2132,31 +2147,33 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
   
         /* Rozmieść węzły */
         layoutFleet();
-  
+
         /* ---- Stan początkowy ---- */
-  
+
         /* Kursor — ukryty */
         if (cursor8) gsap.set(cursor8, { opacity: 0, x: 0, y: 0, scale: 1 });
-  
+
         /* Panel boczny — ukryty, przesunięty w prawo */
         if (sidePanel) gsap.set(sidePanel, { opacity: 0, x: 20, pointerEvents: 'none' });
-  
+
         /* Highlight opcji raportu — brak */
         if (panelReport) panelReport.classList.remove('is-highlighted');
-  
+
         /* Toasty — ukryte */
         if (nodeToast)    gsap.set(nodeToast,    { opacity: 0 });
         if (reportToast8) gsap.set(reportToast8, { opacity: 0 });
-  
+
         /* PDF preview — ukryty, przesunięty w górę */
         if (pdfPreview8) gsap.set(pdfPreview8, { opacity: 0, y: -10 });
-  
+
         /* Comparison — ukryte */
         if (comparison8) gsap.set(comparison8, { opacity: 0, visibility: 'hidden' });
-  
+
         /* Aktywny węzeł — brak */
         agentNodes.forEach(function (n) { n.classList.remove('is-active'); });
-  
+
+        if (window.innerWidth <= 860) return;
+
         /* ---- Oblicz pozycje docelowe ---- */
   
         /* Węzeł PC-Marketing (agent 0) */
@@ -2489,6 +2506,9 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
         gsap.set([layerStructure, layerMeaning, layerContext], { opacity: 0 });
         gsap.set(comparison9, { opacity: 0, visibility: 'hidden' });
         typingSpan.innerHTML = '';
+
+        if (window.innerWidth <= 860) return;
+
         orbWrap.classList.remove('is-analyzing');
         if (detectionRows.length) {
           gsap.set(detectionRows, { opacity: 0 });

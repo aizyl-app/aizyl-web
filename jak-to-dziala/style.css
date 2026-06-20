@@ -3797,7 +3797,7 @@
   }
 
   .guardian-doc-wrap {
-    max-width: 100%;
+    max-width: 90%;
     width: 100%;
   }
 
@@ -3930,4 +3930,10 @@
   .waitlist-submit {
     width: 100%;
   }
+}
+
+@media (max-width: 860px) {
+  /* Stan końcowy animacji pokazany statycznie na mobile */
+  .comparison-summary { opacity: 1 !important; visibility: visible !important; }
+  #akt8-report-toast, #akt6-report-toast, #akt5-report-toast { opacity: 0; }
 }
