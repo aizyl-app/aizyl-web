@@ -342,7 +342,7 @@
           <div style="border: 1px solid var(--primary); border-radius: var(--radius); padding: 24px;">
             <p style="font-size: 13px; font-weight: 500; color: var(--primary); margin-bottom: 16px;">Aizyl</p>
             <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
-              <li><span style="color: var(--primary); margin-right: 8px;">✓</span>Od 49 PLN / stanowisko / miesiąc</li>
+              <li><span style="color: var(--primary); margin-right: 8px;">✓</span>Cena w zasięgu małych firm</li>
               <li><span style="color: var(--primary); margin-right: 8px;">✓</span>Zero danych w chmurze</li>
               <li><span style="color: var(--primary); margin-right: 8px;">✓</span>Instalacja w 5 minut</li>
               <li><span style="color: var(--primary); margin-right: 8px;">✓</span>Działa bez internetu</li>
@@ -360,13 +360,13 @@
       <div class="container">
 
         <h2 class="section-heading">Jedna licencja. Jedno stanowisko. Pełna ochrona.</h2>
-        <p style="font-size: 15px; color: var(--muted-foreground); margin-bottom: 16px; text-align: center;">7 dni próbnych — wymagana karta kredytowa. Rabat 16% przy płatności rocznej.</p>
+        <p style="font-size: 15px; color: var(--muted-foreground); margin-bottom: 16px; text-align: center; display: none;">7 dni próbnych — wymagana karta kredytowa. Rabat 16% przy płatności rocznej.</p>
         <p style="font-size: 13px; color: var(--muted-foreground); margin-bottom: 48px; text-align: center;">Cennik obowiązuje od dnia launchu. Zapisz się teraz i dowiedz się pierwszy.</p>
 
         <!-- Przełącznik okresu rozliczeniowego -->
         <div class="pricing-toggle-wrap">
           <button class="pricing-toggle-btn pricing-toggle-btn--active" id="pricing-btn-monthly">Miesięcznie</button>
-          <button class="pricing-toggle-btn" id="pricing-btn-yearly">Rocznie <span class="pricing-toggle-badge">-16%</span></button>
+          <button class="pricing-toggle-btn" id="pricing-btn-yearly">Rocznie <span class="pricing-toggle-badge" style="display: none;">-16%</span></button>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start;">
@@ -376,14 +376,19 @@
             <p style="font-weight: 500; margin-bottom: 8px;">Lite</p>
 
             <!-- Cena miesięczna -->
-            <div class="pricing-price-block" data-pricing="monthly">
+            <div class="pricing-price-block pricing-price-block--launch" data-pricing="monthly">
               <p class="pricing-amount">49 PLN <span class="pricing-period">/seat/mies.</span></p>
               <p class="pricing-annual-note">588 PLN rocznie</p>
             </div>
             <!-- Cena roczna -->
-            <div class="pricing-price-block pricing-price-block--hidden" data-pricing="yearly">
+            <div class="pricing-price-block pricing-price-block--hidden pricing-price-block--launch" data-pricing="yearly">
               <p class="pricing-amount">41 PLN <span class="pricing-period">/seat/mies.</span></p>
               <p class="pricing-annual-note">499 PLN rocznie &mdash; <span class="pricing-saving">oszczędzasz 89 PLN</span></p>
+            </div>
+
+            <div class="pricing-price-block--prelaunch">
+              <p class="pricing-amount">Już wkrótce</p>
+              <p class="pricing-annual-note">Cena przedpremierowa dla zapisanych</p>
             </div>
 
             <ul style="list-style: none; padding: 0; margin: 24px 0; font-size: 13px; line-height: 2;">
@@ -405,14 +410,19 @@
               <p style="font-weight: 500; margin-bottom: 8px;">Pro</p>
 
               <!-- Cena miesięczna -->
-              <div class="pricing-price-block" data-pricing="monthly">
+              <div class="pricing-price-block pricing-price-block--launch" data-pricing="monthly">
                 <p class="pricing-amount">99 PLN <span class="pricing-period">/seat/mies.</span></p>
                 <p class="pricing-annual-note">1 188 PLN rocznie</p>
               </div>
               <!-- Cena roczna -->
-              <div class="pricing-price-block pricing-price-block--hidden" data-pricing="yearly">
+              <div class="pricing-price-block pricing-price-block--hidden pricing-price-block--launch" data-pricing="yearly">
                 <p class="pricing-amount">83 PLN <span class="pricing-period">/seat/mies.</span></p>
                 <p class="pricing-annual-note">999 PLN rocznie &mdash; <span class="pricing-saving">oszczędzasz 189 PLN</span></p>
+              </div>
+
+              <div class="pricing-price-block--prelaunch">
+                <p class="pricing-amount">Już wkrótce</p>
+                <p class="pricing-annual-note">Cena przedpremierowa dla zapisanych</p>
               </div>
 
               <ul style="list-style: none; padding: 0; margin: 24px 0; font-size: 13px; line-height: 2;">
@@ -435,14 +445,19 @@
             <p style="font-weight: 500; margin-bottom: 8px;">Enterprise</p>
 
             <!-- Cena miesięczna -->
-            <div class="pricing-price-block" data-pricing="monthly">
+            <div class="pricing-price-block pricing-price-block--launch" data-pricing="monthly">
               <p class="pricing-amount">199 PLN <span class="pricing-period">/seat/mies.</span></p>
               <p class="pricing-annual-note">2 388 PLN rocznie</p>
             </div>
             <!-- Cena roczna -->
-            <div class="pricing-price-block pricing-price-block--hidden" data-pricing="yearly">
+            <div class="pricing-price-block pricing-price-block--hidden pricing-price-block--launch" data-pricing="yearly">
               <p class="pricing-amount">166 PLN <span class="pricing-period">/seat/mies.</span></p>
               <p class="pricing-annual-note">1 999 PLN rocznie &mdash; <span class="pricing-saving">oszczędzasz 389 PLN</span></p>
+            </div>
+
+            <div class="pricing-price-block--prelaunch">
+              <p class="pricing-amount">Już wkrótce</p>
+              <p class="pricing-annual-note">Cena przedpremierowa dla zapisanych</p>
             </div>
 
             <ul style="list-style: none; padding: 0; margin: 24px 0; font-size: 13px; line-height: 2;">
@@ -457,7 +472,7 @@
 
         </div>
 
-        <p style="font-size: 13px; color: var(--muted-foreground); text-align: center; margin-top: 32px;">Dla 5-osobowej firmy Pro = 495 PLN/miesiąc. Jeden lokalny serwer AI to min. 45 000 PLN jednorazowo. Jedna kara RODO to nawet 20 mln EUR.</p>
+        <p style="font-size: 13px; color: var(--muted-foreground); text-align: center; margin-top: 32px;">Jeden lokalny serwer AI to min. 45 000 PLN jednorazowo. Jedna kara RODO to nawet 20 mln EUR. Aizyl to ułamek tych kosztów.</p>
 
       </div>
     </section>

@@ -893,7 +893,7 @@ a:hover {
 
 /* Główna kwota — identyczna z poprzednią ceną: 32px, var(--primary) */
 .pricing-amount {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--primary);
   line-height: 1.1;
@@ -924,6 +924,16 @@ a:hover {
 /* Klasa modyfikująca — ukrywa blok */
 .pricing-price-block--hidden {
   display: none;
+}
+
+/* Tryb przedpremierowy — ukrywa konkretne kwoty */
+.pricing-price-block--launch {
+  display: none;
+}
+
+/* Blok przedpremierowy — widoczny zamiast kwot */
+.pricing-price-block--prelaunch {
+  display: block;
 }
 
 /* ============================================================
