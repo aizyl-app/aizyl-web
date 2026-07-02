@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://aizyl.pl/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://aizyl.pl/jak-to-dziala</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aizyl.pl/realne-ryzyka</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aizyl.pl/regulamin</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aizyl.pl/polityka-prywatnosci</loc>
+    <priority>0.3</priority>
+  </url>
+</urlset>
